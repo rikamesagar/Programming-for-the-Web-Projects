@@ -3,6 +3,7 @@
 'use strict';
 
 const Ppm = require('./ppm');
+const TextDecoder = require('util').TextDecoder;
 
 /** prefix which always precedes actual message when message is hidden
  *  in an image.
@@ -84,3 +85,22 @@ StegModule.prototype.unhide = function() {
 
 
 module.exports = StegModule;
+
+function unhide(pixelBytes){
+    let dString = ""
+    let byteContainer = []
+    pixelBytes.forEach(function(b){
+        let byte = b
+        let lsb = byte & 1
+        if(byteContainer.length < 8){
+            byteContainer.push(lsb)
+        } else {
+            const raw_letter = '0b'+byteContainer.join('')
+            const letter = new TextDecoder().decode(new Uint8Array([raw_letter]))
+            dString = dString + letter
+            byteContainer = []
+            byteContainer.push(lsb)
+        }
+    })
+    return dString;
+}
