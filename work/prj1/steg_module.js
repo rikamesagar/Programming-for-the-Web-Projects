@@ -45,7 +45,7 @@ function StegModule(id, ppm) {
  * starting with a hidden STEG_MAGIC string.
  *
  * Each error message must start with the above IDs (STEG_TOO_BIG, etc).
- */ 
+ */
 
 StegModule.prototype.hide = function(msg) {
   //TODO: hide STEG_MAGIC + msg + '\0' into a copy of this.ppm
@@ -70,7 +70,7 @@ StegModule.prototype.hide = function(msg) {
  * was not found).
  *
  * Each error message must start with the above IDs (STEG_NO_MSG, etc).
- */ 
+ */
 
 StegModule.prototype.unhide = function() {
   //TODO
@@ -92,10 +92,27 @@ StegModule.prototype.unhide = function() {
 		byteContainer = []
 		byteContainer.push(lsb)
 	}
-//  console.log(dString);
   })
-  console.log(dString)
-  return dString;
-//  return { msg:  };
+
+String.prototype.trimLeft = function(preFix) {
+  if (preFix === undefined)
+    charlist = "\s";
+
+ return this.replace(new RegExp("^[" + preFix + "]+"), "");
+};
+ dString = dString.trimLeft("stg")
+//console.log("First Letter"+dString[0])
+let tempString = ""
+  for(let i = 0; i < dString.indexOf("\0"); i++){
+                tempString =  tempString + dString[i];
+  }
+
+//console.log(tempString);
+//  dString.toString
+
+  decodedMessage = console.log("Decoded Message is :" + tempString)
+//  console.log(dString)
+//  return 'msg: ' + dString;
+  return { msg: decodedMessage };
 }
 module.exports = StegModule;
