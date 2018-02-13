@@ -1,6 +1,6 @@
 #!/usr/bin/env nodejs
 
-
+const TextEncoder = require('util').TextEncoder;
 const TextDecoder = require('util').TextDecoder;
 'use strict'; const Ppm = require('./ppm'); /** prefix which always precedes actual message when message is hidden
  * in an image.
@@ -50,7 +50,32 @@ function StegModule(id, ppm) {
 StegModule.prototype.hide = function(msg) {
   //TODO: hide STEG_MAGIC + msg + '\0' into a copy of this.ppm
   //construct copy as shown below, then update pixelBytes in the copy.
-  return { ppm: new Ppm(this.ppm) };
+  pixelBytesLocal = this.ppm.pixelBytes;
+  pixelBytesLocal = new Uint8Array(pixelBytesLocal)
+  const stegMessage = "stg"+msg+"\0"
+  let arrEncodedStegMessage = []
+  let encodedStegMessage = new TextEncoder().encode(stegMessage)
+  encodedStegMessage.forEach(function(letter){
+	const letterArray = []
+	let mask = 1 << 7
+	while(mask>0){
+		if((letter & mask) === mask){
+			letterArray.push(1)
+		}else{
+			letterArray.push(0)
+		}
+		mask = mask >> 1
+	}
+	arrEncodedStegMessage.push(letterArray)
+  })
+  arrEncodedStegMessage.forEach(function(arr, index){
+	arr.forEach(function(bit, bitIndex){
+		const pixelIndex = (index * 8) + bitIndex
+		pixelBytesLocal[pixelIndex] = bit === 0 ? pixelBytesLocal[pixelIndex] & (~1) : pixelBytesLocal[pixelIndex] | 1;
+	})
+  })
+  this.ppm.pixelBytes = pixelBytesLocal;
+  return {ppm: new Ppm(this.ppm)};
 }
 /** Return message hidden in this StegModule object.  Specifically, if
  * an error occurs, then return an object with "error" property set
@@ -107,7 +132,7 @@ let tempString = ""
                 tempString =  tempString + dString[i];
   }
 
-  decodedMessage = "Decoded Message is :" + tempString
+  decodedMessage = "Decoded Message is : " + tempString
 //  console.log(dString)
 //  return 'msg: ' + dString;
   return { msg: decodedMessage };
