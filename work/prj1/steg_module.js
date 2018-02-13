@@ -101,16 +101,13 @@ String.prototype.trimLeft = function(preFix) {
  return this.replace(new RegExp("^[" + preFix + "]+"), "");
 };
  dString = dString.trimLeft("stg")
-//console.log("First Letter"+dString[0])
+
 let tempString = ""
   for(let i = 0; i < dString.indexOf("\0"); i++){
                 tempString =  tempString + dString[i];
   }
 
-//console.log(tempString);
-//  dString.toString
-
-  decodedMessage = console.log("Decoded Message is :" + tempString)
+  decodedMessage = "Decoded Message is :" + tempString
 //  console.log(dString)
 //  return 'msg: ' + dString;
   return { msg: decodedMessage };
