@@ -55,6 +55,7 @@ StegModule.prototype.hide = function(msg) {
   const stegMessage = "stg"+msg+"\0"
   let arrEncodedStegMessage = []
   let encodedStegMessage = new TextEncoder().encode(stegMessage)
+  //const letterArray = []
   encodedStegMessage.forEach(function(letter){
 	const letterArray = []
 	let mask = 1 << 7
