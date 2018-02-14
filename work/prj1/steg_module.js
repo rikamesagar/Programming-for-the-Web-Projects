@@ -4,7 +4,8 @@ const TextEncoder = require('util').TextEncoder;
 const TextDecoder = require('util').TextDecoder;
 'use strict'; const Ppm = require('./ppm'); /** prefix which always precedes actual message when message is hidden
  * in an image.
- */ const STEG_MAGIC = 'stg'; /** Constructor which takes some kind of ID and a Ppm image */ 
+ */ 
+const STEG_MAGIC = 'stg'; /** Constructor which takes some kind of ID and a Ppm image */ 
 function StegModule(id, ppm) {
   this.id = id;
   this.ppm = ppm;
@@ -51,14 +52,14 @@ StegModule.prototype.hide = function(msg) {
   //TODO: hide STEG_MAGIC + msg + '\0' into a copy of this.ppm
   //construct copy as shown below, then update pixelBytes in the copy.
   pixelBytesLocal = this.ppm.pixelBytes;
-  pixelBytesLocal = new Uint8Array(pixelBytesLocal)
-  const stegMessage = "stg"+msg+"\0"
+  pixelBytesLocal = new Uint8Array(pixelBytesLocal)			//Creating local copy of pixelBytes
+  const stegMessage = STEG_MAGIC+msg+"\0"
   let arrEncodedStegMessage = []
-  let encodedStegMessage = new TextEncoder().encode(stegMessage)
+  let encodedStegMessage = new TextEncoder().encode(stegMessage)	//Converting strgmsg from String to ASCII
   //const letterArray = []
   encodedStegMessage.forEach(function(letter){
 	const letterArray = []
-	let mask = 1 << 7
+	let mask = 1 << 7						//To convert Decimal to Binary
 	while(mask>0){
 		if((letter & mask) === mask){
 			letterArray.push(1)
@@ -126,16 +127,28 @@ String.prototype.trimLeft = function(preFix) {
 
  return this.replace(new RegExp("^[" + preFix + "]+"), "");
 };
- dString = dString.trimLeft("stg")
+
+  const stgAbsent = dString.indexOf(STEG_MAGIC) === -1
+//const nullAbsent = dString.indexOf("\0") != -1
+
+//  console.log(dString.indexOf("\0"))
+//  console.log(dString.length)
+
+  if(stgAbsent) return {error: "STEG_NO_MSG"}
+//  if(nullAbsent) return {error: "STEG_BAD_MSG"}
+
+ dString = dString.trimLeft(STEG_MAGIC)
 
 let tempString = ""
   for(let i = 0; i < dString.indexOf("\0"); i++){
                 tempString =  tempString + dString[i];
   }
 
-  decodedMessage = "Decoded Message is : " + tempString
+    decodedMessage = "Decoded Message is : " + tempString
+
 //  console.log(dString)
 //  return 'msg: ' + dString;
-  return { msg: decodedMessage };
+   return { msg: decodedMessage };
+//   return { msg: dString };
 }
 module.exports = StegModule;
