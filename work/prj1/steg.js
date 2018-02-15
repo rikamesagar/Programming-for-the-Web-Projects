@@ -38,7 +38,6 @@ function hide(steg, msg) {
     console.error(result.error);
   }
   else {
-//  console.log("Debugging........." + result.ppm);
     process.stdout.write(Buffer.from(result.ppm.bytes()));
   }
 }

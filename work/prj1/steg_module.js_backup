@@ -11,24 +11,26 @@ function StegModule(id, ppm) {
   this.ppm = ppm;
 }
 
-/************************************  HIDE  ***********************************************/
+/**************************   HIDE   ***********************************************************************************************************/
 
 StegModule.prototype.hide = function(msg) {
   //TODO: hide STEG_MAGIC + msg + '\0' into a copy of this.ppm
   //construct copy as shown below, then update pixelBytes in the copy.
+  pixelBytesLocal = this.pixelBytes;
+/*
+  let retUnhide = this.unhide(msg)
+  let unhideSucc = retUnhide.length
+  if(unhideSucc != 'undefined') return {error: "STEG_MSG: "+ this.id +" image already contains a hidden message"};
+*/
 
-  var retUnhide = this.unhide();
-  if(retUnhide.msg != null) return {error: "STEG_MSG: "+ this.id +" image already contains a hidden message"};
+/*
+  let width = this.ppm.width
+  let height = this.ppm.height
+  let imageSize = width * height
+  let message = msg;
 
-
-  var maxSize = (this.ppm.width*this.ppm.height*3/8 - 3);
-
-  if(msg.length+1 > maxSize)
-  {
-	return {error: "STEG_TOO_BIG : "+this.id+" message too big to be hidden in image"};
-  }
-
-  pixelBytesLocal = this.ppm.pixelBytes;
+  if((message.length) > ((imageSize)/2)) return {error: "STEG_TOO_BIG: " + argv[2] + ": message too big to be hidden in image"}
+*/
   pixelBytesLocal = new Uint8Array(pixelBytesLocal)			//Creating local copy of pixelBytes
   const stegMessage = STEG_MAGIC+msg+"\0"
   let arrEncodedStegMessage = []
@@ -54,17 +56,18 @@ StegModule.prototype.hide = function(msg) {
 	})
   })
   this.ppm.pixelBytes = pixelBytesLocal;
+
   return {ppm: new Ppm(this.ppm)};
 }
-
-/*****************************   UNHIDE    ******************************************************************************************/
-
+/*************************   UNHIDE   ****************************************************************************************************************/
 StegModule.prototype.unhide = function() {
   //TODO
   //console.log(this.ppm.pixelBytes)
   //let pixelBytesUnhide = this.ppm.pioxelBytes
   //console.log(this.ppm.pixelBytes)
+
   let dString = ""
+
   let byteContainer = []
   this.ppm.pixelBytes.forEach(function(b){
 	let byte = b
@@ -81,31 +84,55 @@ StegModule.prototype.unhide = function() {
 	}
   })
 
-String.prototype.trimLeft = function(preFix) {
+  String.prototype.trimLeft = function(preFix) {
   if (preFix === undefined)
     charlist = "\s";
 
- return this.replace(new RegExp("^[" + preFix + "]+"), "");
-};
+  return this.replace(new RegExp("^[" + preFix + "]+"), "");
+  };
 
   const stgAbsent = dString.indexOf(STEG_MAGIC) === -1
-  const nullAbsent = dString.indexOf("\0") === -1
+//const nullAbsent = dString.indexOf("\0") != -1
 
 //  console.log(dString.indexOf("\0"))
 //  console.log(dString.length)
 
-  if(stgAbsent) return {error: "STEG_NO_MSG: "+this.id+": image does not have a message"}
-  if(nullAbsent) return {error: "STEG_BAD_MSG: " +this.id+ " bad message"}
+  if(stgAbsent) return {error: "STEG_NO_MSG: "+ this.id +" image does not have a message"}
+//  if(nullAbsent) return {error: "STEG_BAD_MSG"}
 
  dString = dString.trimLeft(STEG_MAGIC)
 
-let tempString = ""
+  let tempString = ""
   for(let i = 0; i < dString.indexOf("\0"); i++){
                 tempString =  tempString + dString[i];
   }
 
-   decodedMessage = tempString
+//    decodedMessage = "Decoded Message is : " + tempString
 
-   return { msg: decodedMessage};
+//  console.log(dString)
+//  return 'msg: ' + dString;
+   return { msg: "Decoded Message is : " + tempString };
 }
 module.exports = StegModule;
+
+/*
+function conversionToString(pixelBytes){
+  let dString = ""
+  let byteContainer = []
+  pixelBytes.forEach(function(b){
+        let byte = b
+        let lsb = byte & 1
+        if(byteContainer.length < 8){
+                byteContainer.push(lsb)
+        }
+        else{
+                const raw_letter = '0b'+byteContainer.join('')
+                const letter = new TextDecoder().decode(new Uint8Array([raw_letter]))
+                dString = dString + letter
+                byteContainer = []
+                byteContainer.push(lsb)
+        }
+  })
+ return dString;
+}
+*/
