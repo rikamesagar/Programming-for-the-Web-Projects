@@ -153,6 +153,21 @@ async function meta(group, name) {
  */
 async function put(group, imgPath) {
   //TODO
+  
+  try{
+    console.log("DB URL "+dbUrl)
+    const db = await MongoClient.connect(dbUrl)
+    const dbo = db.db("images")
+    console.log("DB " +dbo)
+    const collection = await dbo.collection("imageCollection")
+    const imageData = await fsReadFile(imageFileName)
+    const binImage = Binary(imageData)
+    const res = collection.insertOne({group:"/test", name:"test", bin:binImage})
+    return res
+  }catch(e){
+    console.log("ERROR "+e)
+  }
+  
   return;
 }
 
