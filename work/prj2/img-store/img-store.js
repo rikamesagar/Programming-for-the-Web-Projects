@@ -85,6 +85,19 @@ async function close() {
  */
 async function get(group, name, type) {
   //TODO: replace dummy return value
+  
+  try{
+    const db = await MongoClient.connect(dbUrl)
+    const dbo = db.db("images")
+    const image = await dbo.collection("imageCollection").findOne({name:"test"})
+    const imageBuffer = new Uint8Array(image.bin)
+    console.log("image data "+ image.bin)
+    const imageWritten = await fsWriteFile('got_rose.ppm', new Buffer(image.bin))
+    console.log("Writing done")
+  }catch(e){
+    console.log("ERROR "+e)
+  }
+  
   return new Uint8Array();
 }
 
