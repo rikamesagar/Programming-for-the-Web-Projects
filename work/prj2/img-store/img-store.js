@@ -6,6 +6,14 @@ const assert = require('assert');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+
+const MongoClient = require('mongodb').MongoClient;
+const Binary = require('mongodb').Binary;
+const dbUrl = "mongodb://localhost:27017";
+const util = require('util');
+
+const fsReadFile = util.promisify(fs.readFile)
+const fsWriteFile = util.promisify(fs.writeFile)
 //TODO: add require()'s as necessary
 
 /** This module provides an interface for storing, retrieving and
