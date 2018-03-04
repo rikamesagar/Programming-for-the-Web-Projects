@@ -6,14 +6,12 @@ const assert = require('assert');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-
 const MongoClient = require('mongodb').MongoClient;
 const Binary = require('mongodb').Binary;
-const dbUrl = "mongodb://localhost:27017";
 const util = require('util');
-
 const fsReadFile = util.promisify(fs.readFile)
 const fsWriteFile = util.promisify(fs.writeFile)
+
 //TODO: add require()'s as necessary
 
 /** This module provides an interface for storing, retrieving and
@@ -44,6 +42,8 @@ const fsWriteFile = util.promisify(fs.writeFile)
 
 function ImgStore() { //TODO: add arguments as necessary
   //TODO
+  this.client = client;
+  this.db = db;
 }
 
 ImgStore.prototype.close = close;
@@ -52,19 +52,23 @@ ImgStore.prototype.list = list;
 ImgStore.prototype.meta = meta;
 ImgStore.prototype.put = put;
 
-/** Factory function for creating a new img-store.
- */
-async function newImgStore() {
-  //TODO
-  return new ImgStore(); //provide suitable arguments
-}
-module.exports = newImgStore;
-
 /** URL for database images on mongodb server running on default port
  *  on localhost
  */
 const MONGO_URL = 'mongodb://localhost:27017';
 const DB_NAME = 'images';
+
+
+/** Factory function for creating a new img-store.
+ */
+async function newImgStore() {
+  //TODO
+  const client = await mongo.connect(MONGO_URL);
+  const db = client.db(DB_NAME);
+  return new ImgStore(client, db);
+
+}
+module.exports = newImgStore;
 
 //List of permitted image types.
 const IMG_TYPES = [
@@ -78,6 +82,7 @@ const IMG_TYPES = [
  */
 async function close() {
   //TODO
+  this.client.close();
 }
 
 /** Retrieve image specified by group and name.  Specifically, return
@@ -93,20 +98,11 @@ async function close() {
  */
 async function get(group, name, type) {
   //TODO: replace dummy return value
-  
-  try{
-    const db = await MongoClient.connect(dbUrl)
-    const dbo = db.db("images")
-    const image = await dbo.collection("imageCollection").findOne({name:"test"})
-    const imageBuffer = new Uint8Array(image.bin)
-    console.log("image data "+ image.bin)
-    const imageWritten = await fsWriteFile('got_rose.ppm', new Buffer(image.bin))
-    console.log("Writing done")
-  }catch(e){
-    console.log("ERROR "+e)
-  }
-  
-  return new Uint8Array();
+  const db = await MongoClient.connect(MONGO_URL)
+  const dbo = db.db("images")
+  const image = await dbo.collection("imageCollection").findOne({name:name, group:group, type: type})
+  const ppm = new Ppm(image._id+"", new Uint8Array(image.bin))
+  return image.bin.read(0)
 }
 
 /** Return promise which resolves to an array containing the names of
@@ -122,7 +118,11 @@ async function get(group, name, type) {
  */
 async function list(group) {
   //TODO: replace dummy return value
-  return [];
+  const db = await MongoClient.connect(MONGO_URL)
+  const dbo = db.db("images")
+  const collection = await dbo.collection("imageCollection")
+  const images = await collection.find({group: group})
+  return images.map((element, key)=>element.name)
 }
 
 /** Return promise which resolves to an object containing
@@ -150,9 +150,13 @@ async function list(group) {
  */
 async function meta(group, name) {
   //TODO: replace dummy return value
-  const info = { creationTime: Date.now() };
+  const db = await MongoClient.connect(MONGO_URL)
+  const dbo = db.db("images")
+  const collection = await dbo.collection("metaCollection")
+  const meta = await collection.findOne({group: group, name: name})
+  const info = { creationTime: meta.creationTime };  
   return ['width', 'height', 'maxNColors', 'nHeaderBytes']
-    .reduce((acc, e) => { acc[e] = 'TODO'; return acc; }, info);    
+    .reduce((acc, e) => { acc[e] = meta[e]; return acc; }, info);    
 }
 
 /** Store the image specified by imgPath in the database under the
@@ -173,23 +177,19 @@ async function meta(group, name) {
  * 
  */
 async function put(group, imgPath) {
-  //TODO
-  
-  try{
-    console.log("DB URL "+dbUrl)
-    const db = await MongoClient.connect(dbUrl)
+    const imageName = imgPath.split('/').splice(-1,1)[0].split('.').slice(0, -1)[0]
+    const type = imgPath.split('/').splice(-1,1)[0].split('.').slice(-1)[0]
+    const db = await MongoClient.connect(MONGO_URL)
     const dbo = db.db("images")
-    console.log("DB " +dbo)
     const collection = await dbo.collection("imageCollection")
-    const imageData = await fsReadFile(imageFileName)
-    const binImage = Binary(imageData)
-    const res = collection.insertOne({group:"/test", name:"test", bin:binImage})
-    return res
-  }catch(e){
-    console.log("ERROR "+e)
-  }
-  
-  return;
+    const metaCollection = await dbo.collection("metaCollection")
+    const imageData = await fsReadFile(imgPath)
+    const binImage = new Binary(imageData)
+    const res = collection.insertOne({group:group, name:imageName, bin:binImage, type: type})
+    const ppm = new Ppm(toImgId(group, imageName, type), new Uint8Array(imageData))
+    const meta = {width: ppm.width, maxNColors: ppm.maxNColors, nHeaderBytes: ppm.nHeaderBytes, height: ppm.height, creationTime: Date.now(), group: group, name: imageName}
+    metaCollection.insertOne(meta)
+    return undefined
 }
 
 
