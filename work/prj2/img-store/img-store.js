@@ -6,7 +6,7 @@ const assert = require('assert');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const MongoClient = require('mongodb').MongoClient;
+const mongo = require('mongodb').MongoClient;
 const Binary = require('mongodb').Binary;
 const util = require('util');
 const fsReadFile = util.promisify(fs.readFile)
@@ -40,7 +40,7 @@ const fsWriteFile = util.promisify(fs.writeFile)
  *  appropriate.
  */
 
-function ImgStore() { //TODO: add arguments as necessary
+function ImgStore(client,db) { //TODO: add arguments as necessary
   //TODO
   this.client = client;
   this.db = db;
@@ -98,9 +98,9 @@ async function close() {
  */
 async function get(group, name, type) {
   //TODO: replace dummy return value
-  const db = await MongoClient.connect(MONGO_URL)
-  const dbo = db.db("images")
-  const image = await dbo.collection("imageCollection").findOne({name:name, group:group, type: type})
+//  const db = await MongoClient.connect(MONGO_URL)
+//  const dbo = db.db("images")
+  const image = await this.db.collection("imageCollection").findOne({name:name, group:group, type: type})
   const ppm = new Ppm(image._id+"", new Uint8Array(image.bin))
   return image.bin.read(0)
 }
@@ -118,9 +118,9 @@ async function get(group, name, type) {
  */
 async function list(group) {
   //TODO: replace dummy return value
-  const db = await MongoClient.connect(MONGO_URL)
-  const dbo = db.db("images")
-  const collection = await dbo.collection("imageCollection")
+//  const db = await MongoClient.connect(MONGO_URL)
+//  const dbo = db.db("images")
+  const collection = await this.db.collection("imageCollection")
   const images = await collection.find({group: group})
   return images.map((element, key)=>element.name)
 }
@@ -150,9 +150,9 @@ async function list(group) {
  */
 async function meta(group, name) {
   //TODO: replace dummy return value
-  const db = await MongoClient.connect(MONGO_URL)
-  const dbo = db.db("images")
-  const collection = await dbo.collection("metaCollection")
+//  const db = await MongoClient.connect(MONGO_URL)
+//  const dbo = db.db("images")
+  const collection = await this.db.collection("metaCollection")
   const meta = await collection.findOne({group: group, name: name})
   const info = { creationTime: meta.creationTime };  
   return ['width', 'height', 'maxNColors', 'nHeaderBytes']
@@ -179,10 +179,10 @@ async function meta(group, name) {
 async function put(group, imgPath) {
     const imageName = imgPath.split('/').splice(-1,1)[0].split('.').slice(0, -1)[0]
     const type = imgPath.split('/').splice(-1,1)[0].split('.').slice(-1)[0]
-    const db = await MongoClient.connect(MONGO_URL)
-    const dbo = db.db("images")
-    const collection = await dbo.collection("imageCollection")
-    const metaCollection = await dbo.collection("metaCollection")
+//    const db = await MongoClient.connect(MONGO_URL)
+//    const dbo = this.db("images")
+    const collection = await this.db.collection("imageCollection")
+    const metaCollection = await this.db.collection("metaCollection")
     const imageData = await fsReadFile(imgPath)
     const binImage = new Binary(imageData)
     const res = collection.insertOne({group:group, name:imageName, bin:binImage, type: type})
