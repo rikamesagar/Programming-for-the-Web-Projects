@@ -96,7 +96,14 @@ async function close() {
  *    NOT_FOUND:   there is no stored image for name under group.
  */
 async function get(group, name, type) {
+  let error = isBadType(type) || isBadName(name) || isBadGroup(group)
+  if(error) throw error;
+  if(isBadGroup(group)){
+    throw isBadGroup(group)
+  }
   const image = await this.db.collection("imageCollection").findOne({name:name, group:group, type: type})
+  error = image === null
+  if(error) throw new ImgError('NOT_FOUND',`there is no stored image for name '${name}' for group '${group}'`)
   let imageData = null
   if(image.type === "png"){
     const temp = `${tmpDir}/${name}.ppm`
@@ -122,6 +129,8 @@ async function get(group, name, type) {
  *    BAD_GROUP:   group is invalid (contains a NUL-character).
  */
 async function list(group) {
+  let error = isBadGroup(group)
+  if(error) throw error;
   const collection = await this.db.collection("imageCollection")
   const images = await collection.find({group: group})
   return images.map((element, key)=>element.name)
@@ -151,8 +160,12 @@ async function list(group) {
  *    NOT_FOUND:   there is no stored image for name under group.
  */
 async function meta(group, name) {
+  let error = isBadName(name) || isBadGroup(group)
+  if(error) throw error;
   const collection = await this.db.collection("metaCollection")
   const meta = await collection.findOne({group: group, name: name})
+  error = meta === null
+  if(error) throw new ImgError('NOT_FOUND',`there is no stored image for name '${name}' for group '${group}'`)
   const info = { creationTime: meta.creationTime };  
   return ['width', 'height', 'maxNColors', 'nHeaderBytes']
     .reduce((acc, e) => { acc[e] = meta[e]; return acc; }, info);    
@@ -178,18 +191,29 @@ async function meta(group, name) {
 async function put(group, imgPath) {
     const imageName = imgPath.split('/').splice(-1,1)[0].split('.').slice(0, -1)[0]
     const type = imgPath.split('/').splice(-1,1)[0].split('.').slice(-1)[0]
+    let error = isBadType(type) || isBadGroup(group)
+    if(error) throw error;
     if(type==="png"){
       const newPath = await convertTo("ppm", imgPath)
       imgPath = newPath
     }
     const collection = await this.db.collection("imageCollection")
     const metaCollection = await this.db.collection("metaCollection")
-    const imageData = await fsReadFile(imgPath)
-    const binImage = new Binary(imageData)
-    const res = collection.insertOne({group:group, name:imageName, bin:binImage, type: type})
-    const ppm = new Ppm(toImgId(group, imageName, type), new Uint8Array(imageData))
-    const meta = {width: ppm.width, maxNColors: ppm.maxNColors, nHeaderBytes: ppm.nHeaderBytes, height: ppm.height, creationTime: Date.now(), group: group, name: imageName}
-    metaCollection.insertOne(meta)
+    const count = await collection.count({group: group, name: imageName})
+    if(count>0) throw new ImgError('EXISTS', `the database already contains an image under group ${group} with ${imageName} specified by the base-name of imgPath ${imgPath}`) 
+    try{
+      const imageData = await fsReadFile(imgPath)
+      const binImage = new Binary(imageData)
+      const res = collection.insertOne({group:group, name:imageName, bin:binImage, type: type})
+      const ppm = new Ppm(toImgId(group, imageName, type), new Uint8Array(imageData))
+      if(ppm.errorCode && ppm.errorCode==='BAD_FORMAT') 
+        throw new ImgError('BAD_FORMAT', `the contents of the file specified by imgPath ${imgPath} does not satisfy the image format implied by its extension. `)      
+      const meta = {width: ppm.width, maxNColors: ppm.maxNColors, nHeaderBytes: ppm.nHeaderBytes, height: ppm.height, creationTime: Date.now(), group: group, name: imageName}
+      metaCollection.insertOne(meta)
+    }catch(err){
+      if(err.errorCode) throw err
+      throw new ImgError('NOT_FOUND', `the path ${imgPath} does not exist`)
+    }
     return undefined
 }
 
@@ -264,6 +288,6 @@ async function convertTo(format, imgPath){
   const to = format === "ppm" ? "ppm" : "png"
   const imageName = imgPath.split('/').splice(-1,1)[0].split('.').slice(0, -1)[0]
   const type = imgPath.split('/').splice(-1,1)[0].split('.').slice(-1)[0]
-  await osExec(`magick convert ${imageName}.${_from} ${tmpDir}/${imageName}.${to}`)
+  await osExec(`magick convert ${imgPath} ${tmpDir}/${imageName}.${to}`)
   return `${tmpDir}/${imageName}.${to}`
 }
