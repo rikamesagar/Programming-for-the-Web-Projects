@@ -11,10 +11,9 @@ const Binary = require('mongodb').Binary;
 const util = require('util');
 const fsReadFile = util.promisify(fs.readFile)
 const fsWriteFile = util.promisify(fs.writeFile)
-
 const exec = require('child_process').exec;
 const osExec = util.promisify(exec);
-const tmpDir = '.'//os.tmpdir()
+const tmpDir = '.';//os.tmpdir()
 
 //TODO: add require()'s as necessary
 
@@ -44,18 +43,8 @@ const tmpDir = '.'//os.tmpdir()
  *  appropriate.
  */
 
-function Os_func() {
-    this.execCommand = function(cmd, callback) {
-        exec(cmd, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`exec error: ${error}`);
-                return;
-}
-
-const os_func = promisify()
 
 function ImgStore(client,db) { //TODO: add arguments as necessary
-  //TODO
   this.client = client;
   this.db = db;
 }
@@ -66,23 +55,20 @@ ImgStore.prototype.list = list;
 ImgStore.prototype.meta = meta;
 ImgStore.prototype.put = put;
 
+/** Factory function for creating a new img-store.
+ */
+async function newImgStore() {
+  const client = await mongo.connect(MONGO_URL);
+  const db = client.db(DB_NAME);
+  return new ImgStore(client, db);
+}
+module.exports = newImgStore;
+
 /** URL for database images on mongodb server running on default port
  *  on localhost
  */
 const MONGO_URL = 'mongodb://localhost:27017';
 const DB_NAME = 'images';
-
-
-/** Factory function for creating a new img-store.
- */
-async function newImgStore() {
-  //TODO
-  const client = await mongo.connect(MONGO_URL);
-  const db = client.db(DB_NAME);
-  return new ImgStore(client, db);
-
-}
-module.exports = newImgStore;
 
 //List of permitted image types.
 const IMG_TYPES = [
@@ -96,7 +82,6 @@ const IMG_TYPES = [
  */
 async function close() {
   //TODO
-  this.client.close();
 }
 
 /** Retrieve image specified by group and name.  Specifically, return
@@ -111,12 +96,8 @@ async function close() {
  *    NOT_FOUND:   there is no stored image for name under group.
  */
 async function get(group, name, type) {
-  //TODO: replace dummy return value
-//  const db = await MongoClient.connect(MONGO_URL)
-//  const dbo = db.db("images")
   const image = await this.db.collection("imageCollection").findOne({name:name, group:group, type: type})
-  const ppm = new Ppm(image._id+"", new Uint8Array(image.bin))
- let imageData = null
+  let imageData = null
   if(image.type === "png"){
     const temp = `${tmpDir}/${name}.ppm`
     await fsWriteFile(temp, image.bin.read(0))
@@ -125,11 +106,13 @@ async function get(group, name, type) {
   }else{
     imageData = image.bin.read(0)
   }
-//  const ppm = new Ppm(image._id+"", new Uint8Array(image.bin))
+  const ppm = new Ppm(image._id+"", new Uint8Array(image.bin))
   return imageData
 }
 
 /** Return promise which resolves to an array containing the names of
+ *  all images stored under group.  The resolved value should be an
+ *  empty array if there are no images stored under group.
  *
  *  The implementation of this function must not read the actual image
  *  bytes from the database.
@@ -139,9 +122,6 @@ async function get(group, name, type) {
  *    BAD_GROUP:   group is invalid (contains a NUL-character).
  */
 async function list(group) {
-  //TODO: replace dummy return value
-//  const db = await MongoClient.connect(MONGO_URL)
-//  const dbo = db.db("images")
   const collection = await this.db.collection("imageCollection")
   const images = await collection.find({group: group})
   return images.map((element, key)=>element.name)
@@ -171,9 +151,6 @@ async function list(group) {
  *    NOT_FOUND:   there is no stored image for name under group.
  */
 async function meta(group, name) {
-  //TODO: replace dummy return value
-//  const db = await MongoClient.connect(MONGO_URL)
-//  const dbo = db.db("images")
   const collection = await this.db.collection("metaCollection")
   const meta = await collection.findOne({group: group, name: name})
   const info = { creationTime: meta.creationTime };  
@@ -201,16 +178,13 @@ async function meta(group, name) {
 async function put(group, imgPath) {
     const imageName = imgPath.split('/').splice(-1,1)[0].split('.').slice(0, -1)[0]
     const type = imgPath.split('/').splice(-1,1)[0].split('.').slice(-1)[0]
-//    const db = await MongoClient.connect(MONGO_URL)
-//    const dbo = this.db("images")
-    const collection = await this.db.collection("imageCollection")
-    const metaCollection = await this.db.collection("metaCollection") 
     if(type==="png"){
       const newPath = await convertTo("ppm", imgPath)
       imgPath = newPath
     }
-
-   const imageData = await fsReadFile(imgPath)
+    const collection = await this.db.collection("imageCollection")
+    const metaCollection = await this.db.collection("metaCollection")
+    const imageData = await fsReadFile(imgPath)
     const binImage = new Binary(imageData)
     const res = collection.insertOne({group:group, name:imageName, bin:binImage, type: type})
     const ppm = new Ppm(toImgId(group, imageName, type), new Uint8Array(imageData))
@@ -290,8 +264,6 @@ async function convertTo(format, imgPath){
   const to = format === "ppm" ? "ppm" : "png"
   const imageName = imgPath.split('/').splice(-1,1)[0].split('.').slice(0, -1)[0]
   const type = imgPath.split('/').splice(-1,1)[0].split('.').slice(-1)[0]
-  //console.log(`magick convert ${imageName}.${_from} ${tmpDir}/${imageName}.${to}`);
-//  exec(`magick convert ${imageName}.${_from} ${tmpDir}/${imageName}.${to}`)
-await osExec(`magick convert ${imageName}.${_from} ${tmpDir}/${imageName}.${to}`)  
-return `${tmpDir}/${imageName}.${to}`
+  await osExec(`magick convert ${imageName}.${_from} ${tmpDir}/${imageName}.${to}`)
+  return `${tmpDir}/${imageName}.${to}`
 }
