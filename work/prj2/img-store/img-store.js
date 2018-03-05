@@ -213,6 +213,13 @@ async function put(group, imgPath) {
         throw new ImgError('BAD_FORMAT', `the contents of the file specified by imgPath ${imgPath} does not satisfy the image format implied by its extension. `)      
       const meta = {width: ppm.width, maxNColors: ppm.maxNColors, nHeaderBytes: ppm.nHeaderBytes, height: ppm.height, creationTime: Date.now(), group: group, name: imageName}
       metaCollection.insertOne(meta)
+      if(type==="png") unLink(imgPath)
+      imageData = await fsReadFile(`${tmpDir}/${name}.png`)
+      unLink(`${tmpDir}/${name}.ppm`)
+      unLink(`${tmpDir}/${name}.png`)
+      const osExec = util.promisify(exec);
+      const unLink = util.promisify(fs.unlink);
+      
     }catch(err){
       if(err.errorCode) throw err
       throw new ImgError('NOT_FOUND', `the path ${imgPath} does not exist`)
