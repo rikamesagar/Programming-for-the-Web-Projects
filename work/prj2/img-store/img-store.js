@@ -82,6 +82,9 @@ const IMG_TYPES = [
  */
 async function close() {
   //TODO
+//	this.db.close();
+	this.client.close();
+	
 }
 
 /** Retrieve image specified by group and name.  Specifically, return

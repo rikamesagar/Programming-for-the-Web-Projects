@@ -17,6 +17,7 @@ async function main(argv) {
     imgStore = await newImgStore();
     const result = await imgStore[cmd].apply(imgStore, args);
     COMMANDS[cmd].out.call(null, result);
+//console.log("After commands");
   }
   catch (err) {
     if (typeof err === 'object' && err.errorCode && err.message) {
@@ -71,5 +72,3 @@ function error(argv, err) {
   if (err) console.log(err);
   usage(argv);
 }
-
-
