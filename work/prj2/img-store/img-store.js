@@ -178,6 +178,7 @@ async function meta(group, name) {
 async function put(group, imgPath) {
     const imageName = imgPath.split('/').splice(-1,1)[0].split('.').slice(0, -1)[0]
     const type = imgPath.split('/').splice(-1,1)[0].split('.').slice(-1)[0]
+	console.log("Testing");
     if(type==="png"){
       const newPath = await convertTo("ppm", imgPath)
       imgPath = newPath
@@ -192,8 +193,6 @@ async function put(group, imgPath) {
     metaCollection.insertOne(meta)
     return undefined
 }
-
-
 
 //Utility functions
 
@@ -264,6 +263,6 @@ async function convertTo(format, imgPath){
   const to = format === "ppm" ? "ppm" : "png"
   const imageName = imgPath.split('/').splice(-1,1)[0].split('.').slice(0, -1)[0]
   const type = imgPath.split('/').splice(-1,1)[0].split('.').slice(-1)[0]
-  await osExec(`magick convert ${imageName}.${_from} ${tmpDir}/${imageName}.${to}`)
+  await osExec(`magick convert ${imgPath} ${tmpDir}/${imageName}.${to}`)
   return `${tmpDir}/${imageName}.${to}`
 }
