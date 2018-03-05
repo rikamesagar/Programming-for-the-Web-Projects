@@ -1,0 +1,847 @@
+1..24
+File: /home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/Magick++/demo//model.miff
+  TopLeftColor     = 
+  TopRightColor    = 
+  BottomLeftColor  = 
+  BottomRightColor = 
+  filter:brightness:mean = 28064.7
+  filter:brightness:standard-deviation = 14301.2
+  filter:brightness:kurtosis = 0.845075
+  filter:brightness:skewness = 1.40394
+  filter:saturation:mean = 14866.4
+  filter:saturation:standard-deviation = 16329
+  filter:saturation:kurtosis = 3.25558
+  filter:saturation:skewness = 2.06652
+lt-button: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-button: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-button: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-button: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+ok
+PASS: Magick++/demo/demos.tap 1
+Writing to "button_out.miff" ...
+ok
+PASS: Magick++/demo/demos.tap 2
+Read images ...
+Creating thumbnails...
+  add noise ...
+  add noise (blue) ...
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+  annotate ...
+  blur ...
+  blur red channel ...
+  border ...
+  channel ...
+  charcoal ...
+  composite ...
+  contrast ...
+  convolve ...
+  crop ...
+  despeckle ...
+  draw ...
+  edge ...
+  emboss ...
+  equalize ...
+  explode ...
+  flip ...
+  flop ...
+  frame ...
+  gamma ...
+  gaussian blur ...
+  gaussian blur channel ...
+  gradient ...
+  grayscale ...
+  implode ...
+  level ...
+  level red channel ...
+  median filter ...
+  modulate ...
+  monochrome ...
+  motion blur ...
+  negate ...
+  normalize ...
+  oil paint ...
+  ordered dither 2x2 ...
+  ordered dither 3x3...
+  ordered dither 4x4...
+  ordered dither red 4x4...
+  plasma ...
+  quantize ...
+  quantum operator ...
+  raise ...
+  reduce noise ...
+  resize ...
+  roll ...
+  rotate ...
+  scale ...
+  segment ...
+  shade ...
+  sharpen ...
+  shave ...
+  shear ...
+  spread ...
+  solarize ...
+  swirl ...
+  threshold ...
+  threshold random ...
+  unsharp mask ...
+  wave ...
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-demo: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-demo: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+Montage images...
+Adding logo image ...
+Writing image "demo_out.miff" ...
+ok
+PASS: Magick++/demo/demos.tap 3
+Writing image "flip_out.miff" ...
+ok
+PASS: Magick++/demo/demos.tap 4
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 0
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 30
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 60
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 90
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 120
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 150
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 180
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 210
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 240
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 270
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 300
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-gravity: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-gravity: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+angle 330
+Writing image "gravity_out.miff" ...
+lt-piddle: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-piddle: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-piddle: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-piddle: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+ok
+PASS: Magick++/demo/demos.tap 5
+Caught exception: lt-piddle: non-conforming drawing primitive definition `text' @ error/draw.c/DrawImage/3331
+lt-shapes: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-shapes: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-shapes: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-shapes: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-shapes: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-shapes: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-shapes: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-shapes: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-shapes: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-shapes: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+lt-shapes: delegate library support not built-in '/usr/share/fonts/type1/gsfonts/n019003l.pfb' (Freetype) @ warning/annotate.c/RenderFreetype/1797.
+lt-shapes: no decode delegate for this image format `PNG' @ error/constitute.c/ReadImage/509.
+not ok
+FAIL: Magick++/demo/demos.tap 6
+Writing image "shapes_out.miff" ...
+ok
+PASS: Magick++/demo/demos.tap 7
+ok
+PASS: Magick++/demo/demos.tap 8
+ok
+PASS: Magick++/demo/demos.tap 9
+ok
+PASS: Magick++/demo/demos.tap 10
+ok
+PASS: Magick++/demo/demos.tap 11
+ok
+PASS: Magick++/demo/demos.tap 12
+ok
+PASS: Magick++/demo/demos.tap 13
+ok
+PASS: Magick++/demo/demos.tap 14
+ok
+PASS: Magick++/demo/demos.tap 15
+ok
+PASS: Magick++/demo/demos.tap 16
+ok
+PASS: Magick++/demo/demos.tap 17
+ok
+PASS: Magick++/demo/demos.tap 18
+ok
+PASS: Magick++/demo/demos.tap 19
+ok
+PASS: Magick++/demo/demos.tap 20
+ok
+PASS: Magick++/demo/demos.tap 21
+ok
+PASS: Magick++/demo/demos.tap 22
+ok
+PASS: Magick++/demo/demos.tap 23
+ok
+PASS: Magick++/demo/demos.tap 24

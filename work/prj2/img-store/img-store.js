@@ -12,6 +12,10 @@ const util = require('util');
 const fsReadFile = util.promisify(fs.readFile)
 const fsWriteFile = util.promisify(fs.writeFile)
 
+const exec = require('child_process').exec;
+const osExec = util.promisify(exec);
+const tmpDir = '.'//os.tmpdir()
+
 //TODO: add require()'s as necessary
 
 /** This module provides an interface for storing, retrieving and
@@ -39,6 +43,16 @@ const fsWriteFile = util.promisify(fs.writeFile)
  *  code), or it may reject with a JavaScript Error object as
  *  appropriate.
  */
+
+function Os_func() {
+    this.execCommand = function(cmd, callback) {
+        exec(cmd, (error, stdout, stderr) => {
+            if (error) {
+                console.error(`exec error: ${error}`);
+                return;
+}
+
+const os_func = promisify()
 
 function ImgStore(client,db) { //TODO: add arguments as necessary
   //TODO
@@ -102,12 +116,20 @@ async function get(group, name, type) {
 //  const dbo = db.db("images")
   const image = await this.db.collection("imageCollection").findOne({name:name, group:group, type: type})
   const ppm = new Ppm(image._id+"", new Uint8Array(image.bin))
-  return image.bin.read(0)
+ let imageData = null
+  if(image.type === "png"){
+    const temp = `${tmpDir}/${name}.ppm`
+    await fsWriteFile(temp, image.bin.read(0))
+    await convertTo("png", temp)
+    imageData = await fsReadFile(`${tmpDir}/${name}.png`)
+  }else{
+    imageData = image.bin.read(0)
+  }
+//  const ppm = new Ppm(image._id+"", new Uint8Array(image.bin))
+  return imageData
 }
 
 /** Return promise which resolves to an array containing the names of
- *  all images stored under group.  The resolved value should be an
- *  empty array if there are no images stored under group.
  *
  *  The implementation of this function must not read the actual image
  *  bytes from the database.
@@ -182,8 +204,13 @@ async function put(group, imgPath) {
 //    const db = await MongoClient.connect(MONGO_URL)
 //    const dbo = this.db("images")
     const collection = await this.db.collection("imageCollection")
-    const metaCollection = await this.db.collection("metaCollection")
-    const imageData = await fsReadFile(imgPath)
+    const metaCollection = await this.db.collection("metaCollection") 
+    if(type==="png"){
+      const newPath = await convertTo("ppm", imgPath)
+      imgPath = newPath
+    }
+
+   const imageData = await fsReadFile(imgPath)
     const binImage = new Binary(imageData)
     const res = collection.insertOne({group:group, name:imageName, bin:binImage, type: type})
     const ppm = new Ppm(toImgId(group, imageName, type), new Uint8Array(imageData))
@@ -256,4 +283,15 @@ function isBadType(type) {
 function ImgError(code, msg) {
   this.errorCode = code;
   this.message = msg;
+}
+
+async function convertTo(format, imgPath){
+  const _from = format === "ppm" ? "png" : "ppm";
+  const to = format === "ppm" ? "ppm" : "png"
+  const imageName = imgPath.split('/').splice(-1,1)[0].split('.').slice(0, -1)[0]
+  const type = imgPath.split('/').splice(-1,1)[0].split('.').slice(-1)[0]
+  //console.log(`magick convert ${imageName}.${_from} ${tmpDir}/${imageName}.${to}`);
+//  exec(`magick convert ${imageName}.${_from} ${tmpDir}/${imageName}.${to}`)
+await osExec(`magick convert ${imageName}.${_from} ${tmpDir}/${imageName}.${to}`)  
+return `${tmpDir}/${imageName}.${to}`
 }

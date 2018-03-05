@@ -1,0 +1,22 @@
+# Test environment
+top_srcdir='/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24'
+top_builddir='/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24'
+
+set -a
+COMPARE="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/utilities/magick compare"
+COMPOSITE="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/utilities/magick composite"
+CONJURE="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/utilities/magick conjure"
+CONVERT="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/utilities/magick convert"
+DISPLAY="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/utilities/magick display"
+IDENTIFY="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/utilities/magick identify"
+MAGICK="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/utilities/magick"
+MONTAGE="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/utilities/magick montage"
+VALIDATE="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/tests/validate"
+DRAWTEST="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/tests/drawtest"
+WANDTEST="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/tests/wandtest"
+LD_LIBRARY_PATH="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/magick/.libs:${LD_LIBRARY_PATH}"
+MAGICK_CODER_MODULE_PATH="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/coders"
+MAGICK_CONFIGURE_PATH="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/config:/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/config"
+MAGICK_FILTER_MODULE_PATH="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/filters"
+PATH="/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/utilities:/home/srikame1/git-repos/i580w/work/prj2/ImageMagick-7.0.7-24/tests:${PATH}"
+set +a
