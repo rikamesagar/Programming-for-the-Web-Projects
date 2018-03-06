@@ -197,7 +197,7 @@ async function meta(group, name) {
 async function put(group, imgPath) {
     const imageName = imgPath.split('/').splice(-1,1)[0].split('.').slice(0, -1)[0]
     const type = imgPath.split('/').splice(-1,1)[0].split('.').slice(-1)[0]
-    let error = isBadType(type) || isBadGroup(group)
+    let error = isBadExt(imgPath) || isBadGroup(group)
     if(error) throw error;
     if(type==="png"){
       const newPath = await convertTo("ppm", imgPath)
