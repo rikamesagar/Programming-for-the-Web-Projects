@@ -213,7 +213,7 @@ async function put(group, imgPath) {
       const res = collection.insertOne({group:group, name:imageName, bin:binImage, type: type})
       const ppm = new Ppm(toImgId(group, imageName, type), new Uint8Array(imageData))
       if(ppm.errorCode && ppm.errorCode==='BAD_FORMAT') 
-        throw new ImgError('BAD_FORMAT', `the contents of the file specified by imgPath ${imgPath} does not satisfy the image format implied by its extension. `)      
+        throw new ImgError('BAD_FORMAT', `bad image format`)      
       const meta = {width: ppm.width, maxNColors: ppm.maxNColors, nHeaderBytes: ppm.nHeaderBytes, height: ppm.height, creationTime: Date.now(), group: group, name: imageName}
       metaCollection.insertOne(meta)
       if(type==="png") unLink(imgPath)
