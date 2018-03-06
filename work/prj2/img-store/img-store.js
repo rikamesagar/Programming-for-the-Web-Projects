@@ -281,7 +281,7 @@ function isBadPath(path) {
 
 function isBadType(type) {
   return IMG_TYPES.indexOf(type) < 0 &&
-    new ImgError('BAD_TYPE', `bad image type '${type}'`);
+    new ImgError('BAD_TYPE', `bad image type '${type}'in path ${imgPath}`);
 }
 
 /** Build an image error object using errorCode code and error 
