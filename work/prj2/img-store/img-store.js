@@ -221,7 +221,7 @@ async function put(group, imgPath) {
       
     }catch(err){
       if(err.errorCode) throw err
-      throw new ImgError('NOT_FOUND', `the path ${imgPath} does not exist`)
+      throw new ImgError('NOT_FOUND', `file ${imgPath} not found`)
     }
     return undefined
 }
