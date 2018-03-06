@@ -210,10 +210,11 @@ async function put(group, imgPath) {
     try{
       const imageData = await fsReadFile(imgPath)
       const binImage = new Binary(imageData)
-      const res = collection.insertOne({group:group, name:imageName, bin:binImage, type: type})
+      
       const ppm = new Ppm(toImgId(group, imageName, type), new Uint8Array(imageData))
       if(ppm.errorCode && ppm.errorCode==='BAD_FORMAT') 
         throw new ImgError('BAD_FORMAT', `bad image format`)      
+      const res = collection.insertOne({group:group, name:imageName, bin:binImage, type: type})
       const meta = {width: ppm.width, maxNColors: ppm.maxNColors, nHeaderBytes: ppm.nHeaderBytes, height: ppm.height, creationTime: Date.now(), group: group, name: imageName}
       metaCollection.insertOne(meta)
       if(type==="png") unLink(imgPath)
