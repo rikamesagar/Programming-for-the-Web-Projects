@@ -13,6 +13,7 @@ const fsReadFile = util.promisify(fs.readFile)
 const fsWriteFile = util.promisify(fs.writeFile)
 const exec = require('child_process').exec;
 const osExec = util.promisify(exec);
+const unLink = util.promisify(fs.unlink);
 const tmpDir = '.';//os.tmpdir()
 
 //TODO: add require()'s as necessary
@@ -113,6 +114,8 @@ async function get(group, name, type) {
     await fsWriteFile(temp, image.bin.read(0))
     await convertTo("png", temp)
     imageData = await fsReadFile(`${tmpDir}/${name}.png`)
+    unLink(`${tmpDir}/${name}.ppm`)
+    unLink(`${tmpDir}/${name}.png`)
   }else{
     imageData = image.bin.read(0)
   }
@@ -214,11 +217,7 @@ async function put(group, imgPath) {
       const meta = {width: ppm.width, maxNColors: ppm.maxNColors, nHeaderBytes: ppm.nHeaderBytes, height: ppm.height, creationTime: Date.now(), group: group, name: imageName}
       metaCollection.insertOne(meta)
       if(type==="png") unLink(imgPath)
-      imageData = await fsReadFile(`${tmpDir}/${name}.png`)
-      unLink(`${tmpDir}/${name}.ppm`)
-      unLink(`${tmpDir}/${name}.png`)
-      const osExec = util.promisify(exec);
-      const unLink = util.promisify(fs.unlink);
+      
       
     }catch(err){
       if(err.errorCode) throw err
