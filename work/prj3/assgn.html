@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" />
+  <title>Project 3</title>
+<link href="assgn/hl-fine_blue.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="page">
+<span id="opennav"><i class="material-icons">&#xe5d2;</i></span>
+<div id="nav">
+<div id="closenav"><i class="material-icons">&#xe5cd;</i></div>
+<ul>
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../docs/index.html">Documentation</a></li>
+<li><a href="../../exams-quizzes/index.html">Exams & Quizzes</a></li>
+<li><a href="../../hws/index.html">Homeworks</a></li>
+<li><a href="../../misc/index.html">Miscellaneous</a></li>
+<li><a href="../../projects/index.html">Projects</a></li>
+<li><a href="../../slides/index.html">Slides</a></li>
+
+</ul>
+</div> <!-- #nav -->
+<div id="main">
+  <div id="header">
+<h1>Programming for the Web</h1>
+</div> <!-- #header -->
+<div id="content">
+<section data-coord="assgn.umt:1:0"><h1 data-coord="assgn.umt:1:0">Project 3</h1><p data-coord="assgn.umt:3:0"><strong data-coord="assgn.umt:3:0">Due</strong>: Mar 29 by 11:59p
+</p><p data-coord="assgn.umt:5:0">This document first provides the aims of this project.  It then lists
+the requirements as explicitly as possible.  Subsequently, it provides
+a log of the project in operation to help understand the requirements.
+It then describes the files you have been provided with.  Finally, it
+provides some hints as to how those requirements can be met.
+</p><p data-coord="assgn.umt:11:0"><strong data-coord="assgn.umt:11:0">NOTE</strong>: Intra-document links (in red) do not work if you are reading
+the PDF version of this document.
+</p><section data-coord="assgn.umt:14:0"><h2 data-coord="assgn.umt:14:0">Aims</h2><p data-coord="assgn.umt:17:0">The aims of this project are as follows:
+</p><ul data-coord="assgn.umt:19:0"><li data-coord="assgn.umt:19:0"><p data-coord="assgn.umt:19:4">To implement some simple web services.
+</p></li><li data-coord="assgn.umt:21:0"><p data-coord="assgn.umt:21:4">To expose you to using the express.js server framework.
+</p></li><li data-coord="assgn.umt:23:0"><p data-coord="assgn.umt:23:4">To give you some more experience with asynchronous code.
+</p></li></ul></section><section data-coord="assgn.umt:26:0"><h2 data-coord="assgn.umt:26:0">Requirements</h2><p data-coord="assgn.umt:29:0">This project requires you to implement web services which allow
+adding and retrieving images from a database as well as using
+the stored images to perform steganography.
+</p><p data-coord="assgn.umt:33:0">An image is identified by two strings:
+</p><dl data-coord="assgn.umt:35:0"><dt data-coord="assgn.umt:35:2"> <em data-coord="assgn.umt:35:1">group</em> </dt><dd data-coord="assgn.umt:36:0"><p data-coord="assgn.umt:36:4">A non-empty string which does not contain any <samp data-coord="assgn.umt:36:50">NUL</samp> or <samp data-coord="assgn.umt:36:59">/</samp>
+characters.
+</p></dd><dt data-coord="assgn.umt:39:2"> <em data-coord="assgn.umt:39:1">name</em> </dt><dd data-coord="assgn.umt:40:0"><p data-coord="assgn.umt:40:4">A non-empty string which does not contain any <samp data-coord="assgn.umt:40:50">NUL</samp> or <samp data-coord="assgn.umt:40:59">/</samp>
+characters
+</p></dd></dl><p data-coord="assgn.umt:43:0">Note that above restrictions on <em data-coord="assgn.umt:43:32">group</em> and <em data-coord="assgn.umt:43:44">name</em> allow them
+to be path components within a URL or a Unix filesystem path. 
+</p><p data-coord="assgn.umt:46:0">An example identification for an image might have <em data-coord="assgn.umt:46:50">group</em> <samp data-coord="assgn.umt:46:58">inputs</samp> and
+<em data-coord="assgn.umt:46:71">name</em> <samp data-coord="assgn.umt:46:78">rose</samp>.  Since <em data-coord="assgn.umt:46:93">group</em> and <em data-coord="assgn.umt:46:105">name</em> cannot contain <samp data-coord="assgn.umt:46:127">/</samp>
+characters, we can unambiguously use the single string <em data-coord="assgn.umt:46:186">group</em><samp data-coord="assgn.umt:46:193">/</samp><em data-coord="assgn.umt:46:196">name</em>
+to identify an image, for example <samp data-coord="assgn.umt:46:237">inputs/rose</samp>.
+</p><p data-coord="assgn.umt:51:0">Note that an image id like <samp data-coord="assgn.umt:51:27">inputs/rose</samp> does not say anything about
+its representation.  The image representations which must be handled
+by your project are PNG and PPM.
+</p><p data-coord="assgn.umt:55:0">Set up your gitlab project so that it contains a <samp data-coord="assgn.umt:55:49">prj3/steg-ws</samp>
+subdirectory within the top level <samp data-coord="assgn.umt:55:98">submit</samp> directory.  It should be
+possible to install your project by cloning your gitlab project,
+setting the current directory to its <samp data-coord="assgn.umt:55:234">submit/prj3/steg-ws</samp>
+subdirectory and then running <samp data-coord="assgn.umt:55:286">npm install</samp>.
+</p><p data-coord="assgn.umt:61:0">After the install, the <samp data-coord="assgn.umt:61:23">submit/prj3/img-store</samp> should contain a
+<samp data-coord="assgn.umt:61:64">index.js</samp> executable file which when run will start a web server on
+the port specified by its first command-line argument.  This web
+server should support an underlying database and should accept the
+following HTTP requests:
+</p><dl data-coord="assgn.umt:67:0"><dt data-coord="assgn.umt:67:2"> <strong id="img-store" data-coord="assgn.umt:67:14">Image store service</strong>: <samp data-coord="assgn.umt:67:37">POST</samp> <samp data-coord="assgn.umt:67:44">/api/images/</samp><em data-coord="assgn.umt:67:58">group</em> </dt><dd data-coord="assgn.umt:68:0"><p data-coord="assgn.umt:68:4">The body of this request should be of type <samp data-coord="assgn.umt:68:47">multipart/form-data</samp>
+containing a field <samp data-coord="assgn.umt:68:92">img</samp> which specifies a file upload of
+a PNG or PPM file.  A new image should be created in the
+underlying database with id <em data-coord="assgn.umt:68:224">group</em><samp data-coord="assgn.umt:68:231">/</samp><em data-coord="assgn.umt:68:234">name</em> where <em data-coord="assgn.umt:68:247">group</em>
+is the <em data-coord="assgn.umt:68:266">group</em> suffix of the request URL and <em data-coord="assgn.umt:68:304">name</em> is
+a new name.
+</p><p data-coord="assgn.umt:75:4">If the request is successful, it should return a response
+with status <samp data-coord="assgn.umt:75:78">201</samp> <samp data-coord="assgn.umt:75:84">CREATED</samp> and return a <samp data-coord="assgn.umt:75:107">Location</samp> header
+where the uploaded image can be accessed using the next
+web service.
+</p></dd><dt data-coord="assgn.umt:80:2"> <strong id="img-get" data-coord="assgn.umt:80:12">Image retrieval service</strong>: <samp data-coord="assgn.umt:80:39">GET</samp> <samp data-coord="assgn.umt:80:45">/api/images/</samp><em data-coord="assgn.umt:80:59">group</em><samp data-coord="assgn.umt:80:66">/</samp><em data-coord="assgn.umt:80:69">name</em><samp data-coord="assgn.umt:80:75">.</samp><em data-coord="assgn.umt:80:78">type</em> </dt><dd data-coord="assgn.umt:81:0"><p data-coord="assgn.umt:81:4">Return the <em data-coord="assgn.umt:81:15">type</em> (either <samp data-coord="assgn.umt:81:30">png</samp> or <samp data-coord="assgn.umt:81:39">ppm</samp>)
+representation for the image with id <em data-coord="assgn.umt:81:87">group</em><samp data-coord="assgn.umt:81:94">/</samp><em data-coord="assgn.umt:81:97">name</em>.
+</p></dd><dt data-coord="assgn.umt:84:2"> <strong data-coord="assgn.umt:84:1">Image meta-information service</strong>: <samp data-coord="assgn.umt:84:35">GET</samp> <samp data-coord="assgn.umt:84:41">/api/images/</samp><em data-coord="assgn.umt:84:55">group</em><samp data-coord="assgn.umt:84:62">/</samp><em data-coord="assgn.umt:84:65">name</em><samp data-coord="assgn.umt:84:71">/meta</samp> </dt><dd data-coord="assgn.umt:85:0"><p data-coord="assgn.umt:85:4">If successful, the response body should consist of a JSON object
+containing meta-information for the image with id
+<em data-coord="assgn.umt:85:127">group</em><samp data-coord="assgn.umt:85:134">/</samp><em data-coord="assgn.umt:85:137">name</em>.  The return'd JSON must have the following
+fields:
+</p><dl data-coord="assgn.umt:90:0"><dt data-coord="assgn.umt:90:6"> <samp data-coord="assgn.umt:90:1">"width"</samp> </dt><dd data-coord="assgn.umt:91:0"><p data-coord="assgn.umt:91:8">The width of the image.
+</p></dd><dt data-coord="assgn.umt:93:6"> <samp data-coord="assgn.umt:93:1">"height"</samp> </dt><dd data-coord="assgn.umt:94:0"><p data-coord="assgn.umt:94:8">The height of the image.
+</p></dd><dt data-coord="assgn.umt:96:6"> <samp data-coord="assgn.umt:96:1">"maxNColors"</samp> </dt><dd data-coord="assgn.umt:97:0"><p data-coord="assgn.umt:97:8">The maximum number of colors in the image.
+</p></dd><dt data-coord="assgn.umt:99:6"> <samp data-coord="assgn.umt:99:1">"nHeaderBytes"</samp> </dt><dd data-coord="assgn.umt:100:0"><p data-coord="assgn.umt:100:8">The number of bytes in the header of the PPM representation
+of the image.
+</p></dd><dt data-coord="assgn.umt:103:6"> <samp data-coord="assgn.umt:103:1">"creationTime"</samp> </dt><dd data-coord="assgn.umt:104:0"><p data-coord="assgn.umt:104:8">The time at which this image was stored in the underlying
+database.  The time is represented as the number of
+milliseconds since the epoch <samp data-coord="assgn.umt:104:149">1970-01-01T00:00:00Z</samp>.
+</p></dd></dl></dd><dt data-coord="assgn.umt:108:2"> <strong id="img-list" data-coord="assgn.umt:108:13">Image list service</strong>: <samp data-coord="assgn.umt:108:35">GET</samp> <samp data-coord="assgn.umt:108:41">/api/images/</samp><em data-coord="assgn.umt:108:55">group</em> </dt><dd data-coord="assgn.umt:109:0"><p data-coord="assgn.umt:109:4">If successful, the response body should consist of a JSON list
+containing the names of all the images stored under <em data-coord="assgn.umt:109:123">group</em>.
+</p></dd><dt data-coord="assgn.umt:112:2"> <strong id="msg-hide" data-coord="assgn.umt:112:13">Message hide service</strong>: <samp data-coord="assgn.umt:112:37">POST</samp> <samp data-coord="assgn.umt:112:44">/api/steg/</samp><em data-coord="assgn.umt:112:56">group</em><samp data-coord="assgn.umt:112:63">/</samp><em data-coord="assgn.umt:112:66">name</em> </dt><dd data-coord="assgn.umt:113:0"><p data-coord="assgn.umt:113:4">This request is used to hide a message using the image identified
+by <em data-coord="assgn.umt:113:77">group</em><samp data-coord="assgn.umt:113:84">/</samp><em data-coord="assgn.umt:113:87">name</em> which should already be in the database.  The
+new image containing the hidden message will be stored in the
+database.
+</p><p data-coord="assgn.umt:118:4">The body of this request should consists of a JSON object
+containing two fields:
+</p><dl data-coord="assgn.umt:121:0"><dt data-coord="assgn.umt:121:6"> <samp data-coord="assgn.umt:121:1">outGroup</samp> </dt><dd data-coord="assgn.umt:122:0"><p data-coord="assgn.umt:122:8">A string which specifies a group for the newly created
+image containing the hidden message.
+</p></dd><dt data-coord="assgn.umt:125:6"> <samp data-coord="assgn.umt:125:1">msg</samp> </dt><dd data-coord="assgn.umt:126:0"><p data-coord="assgn.umt:126:8">A string specifying the message to be hidden.
+</p></dd></dl><p data-coord="assgn.umt:128:4">A new image containing the hidden message should be created in the
+underlying database in the group specified by <samp data-coord="assgn.umt:128:121">outGroup</samp> with a
+new name.
+</p><p data-coord="assgn.umt:132:4">If the request is successful, it should return a response with
+status <samp data-coord="assgn.umt:132:78">201</samp> <samp data-coord="assgn.umt:132:84">CREATED</samp> and return a <samp data-coord="assgn.umt:132:107">Location</samp> header which can be
+used to retrieve the hidden message using the next web service.
+</p></dd><dt data-coord="assgn.umt:136:2"> <strong id="msg-unhide" data-coord="assgn.umt:136:15">Message unhide service</strong>: <samp data-coord="assgn.umt:136:41">GET</samp> <samp data-coord="assgn.umt:136:47">/api/steg/</samp><em data-coord="assgn.umt:136:59">group</em><samp data-coord="assgn.umt:136:66">/</samp><em data-coord="assgn.umt:136:69">name</em> </dt><dd data-coord="assgn.umt:137:0"><p data-coord="assgn.umt:137:4">The response body should contain a JSON object with a single
+field <samp data-coord="assgn.umt:137:75">msg</samp> which contains the message which is hidden in
+the image identified by <em data-coord="assgn.umt:137:155">group</em><samp data-coord="assgn.umt:137:162">/</samp><em data-coord="assgn.umt:137:165">name</em>.
+</p></dd></dl><p data-coord="assgn.umt:141:0">Any errors in the above requests should be reported using suitable
+HTTP status codes.  The body of the error response should be a JSON
+object containing a <samp data-coord="assgn.umt:141:155">code</samp> field with a suitable value which may be
+different from the HTTP status code and a <samp data-coord="assgn.umt:141:245">message</samp> field giving
+details about the error.  The server can also log a message to
+standard error.
+</p><p data-coord="assgn.umt:148:0">All data should be stored in the database called <samp data-coord="assgn.umt:148:49">images</samp> at
+the mongo url <samp data-coord="assgn.umt:148:75">mongodb://localhost:27017</samp>.
+</p></section><section data-coord="assgn.umt:152:0"><h2 data-coord="assgn.umt:152:0">Example Log</h2><p data-coord="assgn.umt:155:0">The behavior of the program is illustrated by the following annotated
+log.  It uses <a href="https://linux.die.net/man/1/curl" data-coord="assgn.umt:155:120">curl</a> to exercise the
+web services.
+</p><pre><span class="hl slc">#Note that since the output of many of the commands are not terminated</span>
+<span class="hl slc">#by a newline, the LOG contains an extra newline after those</span>
+<span class="hl slc">#outputs so that the shell $-prompt always starts on a newline.</span>
+
+<span class="hl slc">#start web server in background (the shell prints [jobId] processId).</span>
+$ .<span class="hl opt">/</span>index.js <span class="hl num">1234</span> <span class="hl opt">&amp;</span>
+<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]</span> <span class="hl num">414</span>
+$ listening on port <span class="hl num">1234</span>
+
+<span class="hl slc">#create convenience shell variables</span>
+$ AUX<span class="hl opt">=</span><span class="hl kwd">$HOME</span><span class="hl opt">/</span>cs580w<span class="hl opt">/</span>projects<span class="hl opt">/</span>prj3<span class="hl opt">/</span>aux
+$ URL<span class="hl opt">=</span>http<span class="hl opt">://</span>localhost<span class="hl opt">:</span><span class="hl num">1234</span>
+
+<span class="hl slc"># store rose.png in group inputs.  Options used for curl:</span>
+<span class="hl slc">#   --silent:      no output except for what is explicitly requested</span>
+<span class="hl slc">#   --form:        specify form parameter using key=value; here we</span>
+<span class="hl slc">#                  are setting key as img and value a file upload</span>
+<span class="hl slc">#                  (indicated with the &#64;).  Automatically sets</span>
+<span class="hl slc">#                  content-type of req body to multipart/form-data</span>
+<span class="hl slc">#   --dump-header: dump response headers to - (which means stdout).</span>
+<span class="hl slc"># Note that short options -s, -F, -D can be used instead.</span>
+$ curl <span class="hl opt">--</span>silent <span class="hl opt">--</span>form img<span class="hl opt">=</span>&#64;<span class="hl kwd">$AUX</span><span class="hl opt">/</span>inputs<span class="hl opt">/</span>rose.png \
+        <span class="hl opt">--</span>dump-header <span class="hl opt">-</span> <span class="hl kwd">$URL</span><span class="hl opt">/</span>images<span class="hl opt">/</span>inputs
+HTTP<span class="hl opt">/</span><span class="hl num">1.1 100</span> Continue
+
+HTTP<span class="hl opt">/</span><span class="hl num">1.1 201</span> Created
+X-Powered-By<span class="hl opt">:</span> Express
+Location<span class="hl opt">:</span> http<span class="hl opt">://</span>localhost<span class="hl opt">:</span><span class="hl num">1234</span><span class="hl opt">/</span>api<span class="hl opt">/</span>images<span class="hl opt">/</span>inputs<span class="hl opt">/</span><span class="hl num">0</span>.png
+...
+
+Created
+
+<span class="hl slc">#retrieve image from URL specified by above Location header but as ppm.</span>
+<span class="hl slc">#redirect output into t.ppm.</span>
+$ curl <span class="hl opt">--</span>silent <span class="hl kwd">$URL</span><span class="hl opt">/</span>api<span class="hl opt">/</span>images<span class="hl opt">/</span>inputs<span class="hl opt">/</span><span class="hl num">0</span>.ppm <span class="hl opt">&gt;</span>t.ppm
+
+<span class="hl slc">#verify retrieved image identical to input image</span>
+$ <span class="hl kwc">cmp</span> <span class="hl kwd">$AUX</span><span class="hl opt">/</span>inputs<span class="hl opt">/</span>rose.ppm t.ppm
+
+<span class="hl slc">#store logo.png in group inputs.</span>
+$ curl <span class="hl opt">--</span>silent <span class="hl opt">--</span>form img<span class="hl opt">=</span>&#64;<span class="hl kwd">$AUX</span><span class="hl opt">/</span>inputs<span class="hl opt">/</span>logo.png \
+       <span class="hl opt">--</span>dump-header <span class="hl opt">-</span> <span class="hl kwd">$URL</span><span class="hl opt">/</span>images<span class="hl opt">/</span>inputs
+HTTP<span class="hl opt">/</span><span class="hl num">1.1 100</span> Continue
+
+HTTP<span class="hl opt">/</span><span class="hl num">1.1 201</span> Created
+X-Powered-By<span class="hl opt">:</span> Express
+Location<span class="hl opt">:</span> http<span class="hl opt">://</span>localhost<span class="hl opt">:</span><span class="hl num">1234</span><span class="hl opt">/</span>api<span class="hl opt">/</span>images<span class="hl opt">/</span>inputs<span class="hl opt">/</span><span class="hl num">1</span>.png
+Content-Type<span class="hl opt">:</span> text<span class="hl opt">/</span>plain<span class="hl opt">;</span> charset<span class="hl opt">=</span>utf-8
+...
+
+Created
+
+<span class="hl slc">#retrieve image from URL specified by above Location header but as ppm</span>
+$ curl <span class="hl opt">--</span>silent <span class="hl kwd">$URL</span><span class="hl opt">/</span>api<span class="hl opt">/</span>images<span class="hl opt">/</span>inputs<span class="hl opt">/</span><span class="hl num">1</span>.ppm <span class="hl opt">&gt;</span>t.ppm
+
+<span class="hl slc">#verify retrieved image identical to input image</span>
+$ <span class="hl kwc">cmp</span> <span class="hl kwd">$AUX</span><span class="hl opt">/</span>inputs<span class="hl opt">/</span>logo.ppm t.ppm
+
+<span class="hl slc">#list all image names stored under group inputs</span>
+$ curl <span class="hl opt">--</span>silent <span class="hl kwd">$URL</span><span class="hl opt">/</span>api<span class="hl opt">/</span>images<span class="hl opt">/</span>inputs
+<span class="hl opt">[</span><span class="hl str">&quot;0&quot;</span><span class="hl opt">,</span><span class="hl str">&quot;1&quot;</span><span class="hl opt">]</span>
+
+<span class="hl slc">#hide message &quot;hello&quot; in image inputs/0.  New curl options:</span>
+<span class="hl slc">#  --header:      Set content type of request to application/json.</span>
+<span class="hl slc">#  --request:     Specify HTTP method of POST.</span>
+<span class="hl slc">#  --data:        Body to be sent with POST request.</span>
+<span class="hl slc"># Note that short options -s, -H -X, -F, -d can be used instead.</span>
+$ curl <span class="hl opt">--</span>silent <span class="hl opt">--</span>header <span class="hl str">'Content-Type: application/json'</span> \
+       <span class="hl opt">--</span>request POST \
+       <span class="hl opt">--</span>data <span class="hl str">'{ &quot;outGroup&quot;: &quot;outputs&quot;, &quot;msg&quot;: &quot;hello&quot; }'</span> \
+       <span class="hl opt">--</span>dump-header <span class="hl opt">-</span> <span class="hl kwd">$URL</span><span class="hl opt">/</span>steg<span class="hl opt">/</span>inputs<span class="hl opt">/</span><span class="hl num">0</span>
+HTTP<span class="hl opt">/</span><span class="hl num">1.1 201</span> Created
+X-Powered-By<span class="hl opt">:</span> Express
+Location<span class="hl opt">:</span> http<span class="hl opt">://</span>localhost<span class="hl opt">:</span><span class="hl num">1234</span><span class="hl opt">/</span>api<span class="hl opt">/</span>steg<span class="hl opt">/</span>outputs<span class="hl opt">/</span><span class="hl num">2</span>
+...
+
+Created
+
+<span class="hl slc">#unhide message by doing a GET on above Location</span>
+$ curl <span class="hl opt">--</span>silent <span class="hl kwd">$URL</span><span class="hl opt">/</span>api<span class="hl opt">/</span>steg<span class="hl opt">/</span>outputs<span class="hl opt">/</span><span class="hl num">2</span>
+<span class="hl opt">{</span><span class="hl str">&quot;msg&quot;</span><span class="hl opt">:</span><span class="hl str">&quot;hello&quot;</span><span class="hl opt">}</span>
+
+<span class="hl slc">#put web server back in foreground and terminate using ^C</span>
+$ <span class="hl kwb">fg</span>
+.<span class="hl opt">/</span>index.js <span class="hl num">1234</span>
+^C
+$
+
+<span class="hl slc">#combine above steps together using a shell script do-test.sh:</span>
+$ <span class="hl kwd">$AUX</span><span class="hl opt">/</span>do-test.sh 
+usage<span class="hl opt">:</span> ...aux<span class="hl opt">/</span>do-test.sh <span class="hl opt">[-</span>v<span class="hl opt">]</span> URL PPM_IMG_PATH MSG_PATH
+
+<span class="hl slc">#start server in background</span>
+$ .<span class="hl opt">/</span>index.js <span class="hl num">1234</span> <span class="hl opt">&amp;</span>
+<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]</span> <span class="hl num">26934</span>
+$ listening on port <span class="hl num">1234</span>
+
+<span class="hl slc">#repeat above using shell-script; using -v verbose to see commands executed</span>
+$ <span class="hl kwd">$AUX</span><span class="hl opt">/</span>single-test.sh <span class="hl opt">-</span>v  <span class="hl kwd">$URL</span> \
+     <span class="hl kwd">$AUX</span><span class="hl opt">/</span>inputs<span class="hl opt">/</span>rose.ppm <span class="hl kwd">$AUX</span><span class="hl opt">/</span>messages<span class="hl opt">/</span>hel<span class="hl opt">*</span>
+curl <span class="hl opt">--</span>silent \
+     <span class="hl opt">--</span>form img<span class="hl opt">=</span><span class="hl str">'&#64;/home/umrigar/cs580w/projects/prj3/aux/inputs/rose.ppm'</span> \
+     <span class="hl opt">--</span>dump-header <span class="hl str">'/tmp/headers.txt'</span> \
+     <span class="hl opt">--</span>write-out <span class="hl str">'%{http_code}'</span> \
+     <span class="hl opt">--</span>output <span class="hl opt">/</span>dev<span class="hl opt">/</span>null
+  <span class="hl str">'http://localhost:1234/api/images/inputs'</span>
+curl <span class="hl opt">--</span>silent \
+     <span class="hl opt">--</span>write-out <span class="hl str">'%{http_code}'</span> \
+     <span class="hl opt">--</span>output <span class="hl str">'/tmp/img.ppm'</span> \
+  <span class="hl str">'http://localhost:1234/api/images/inputs/0.ppm'</span>
+<span class="hl kwc">cmp</span> <span class="hl str">'/home/umrigar/cs580w/projects/prj3/aux/inputs/rose.ppm'</span> <span class="hl str">'/tmp/img.ppm'</span>
+curl <span class="hl opt">--</span>silent \
+     <span class="hl opt">--</span>header <span class="hl str">'Content-Type: application/json'</span> \
+     <span class="hl opt">--</span>request POST \
+     <span class="hl opt">--</span>data <span class="hl str">'{ &quot;outGroup&quot;: &quot;outputs&quot;, &quot;msg&quot;: &quot;hello world&quot; }'</span> \
+     <span class="hl opt">--</span>write-out <span class="hl str">'%{http_code}'</span> \
+     <span class="hl opt">--</span>output <span class="hl opt">/</span>dev<span class="hl opt">/</span>null \
+     <span class="hl opt">--</span>dump-header <span class="hl str">'/tmp/headers.txt'</span> \
+  <span class="hl str">'http://localhost:1234/api/steg/inputs/0'</span>
+curl <span class="hl opt">--</span>silent \
+     <span class="hl opt">--</span>write-out <span class="hl str">'%{http_code}'</span> \
+     <span class="hl opt">--</span>output <span class="hl str">'/tmp/msg.txt'</span> \
+  <span class="hl str">'http://localhost:1234/api/steg/outputs/1'</span>
+<span class="hl kwc">cmp</span> <span class="hl str">'.../aux/messages/hello-world.txt'</span> <span class="hl str">'/tmp/msg.txt'</span>
+hello world
+
+<span class="hl slc">#run same test but without verbose -v option</span>
+$ <span class="hl kwd">$AUX</span><span class="hl opt">/</span>single-test.sh <span class="hl kwd">$URL</span> \
+    <span class="hl kwd">$AUX</span><span class="hl opt">/</span>inputs<span class="hl opt">/</span>rose.ppm <span class="hl kwd">$AUX</span><span class="hl opt">/</span>messages<span class="hl opt">/</span>hel<span class="hl opt">*</span>
+hello world
+
+<span class="hl slc">#run test using max size msg which can be hidden in rose</span>
+$ <span class="hl kwd">$AUX</span><span class="hl opt">/</span>single-test.sh <span class="hl kwd">$URL</span> \
+    <span class="hl kwd">$AUX</span><span class="hl opt">/</span>inputs<span class="hl opt">/</span>rose.ppm <span class="hl kwd">$AUX</span><span class="hl opt">/</span>messages<span class="hl opt">/*</span>max<span class="hl opt">*</span>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...
+truncated<span class="hl opt">;</span> total length<span class="hl opt">:</span> <span class="hl num">1203</span>
+
+<span class="hl slc">#run test using msg which is too big to be hidden in rose</span>
+<span class="hl slc">#note StegError printed on this terminal by server</span>
+$ <span class="hl kwd">$AUX</span><span class="hl opt">/</span>single-test.sh  <span class="hl kwd">$URL $AUX</span><span class="hl opt">/</span>inputs<span class="hl opt">/</span>rose.ppm \
+    <span class="hl kwd">$AUX</span><span class="hl opt">/</span>messages<span class="hl opt">/*</span>big<span class="hl opt">*</span>
+StegError <span class="hl opt">{</span>
+  code<span class="hl opt">:</span> <span class="hl str">'STEG_TOO_BIG'</span><span class="hl opt">,</span>
+  message<span class="hl opt">:</span> <span class="hl str">'group/name: message too big to be hidden in image'</span><span class="hl opt">,</span>
+  isDomain<span class="hl opt">:</span> true <span class="hl opt">}</span>
+hide failed
+
+<span class="hl slc">#put server in foreground and terminate using ^C</span>
+$ <span class="hl kwb">fg</span> <span class="hl opt">%</span><span class="hl num">1</span>
+.<span class="hl opt">/</span>index.js <span class="hl num">1234</span>
+^C
+$</pre></section><section data-coord="assgn.umt:315:0"><h2 data-coord="assgn.umt:315:0">Provided Files</h2><p data-coord="assgn.umt:318:0">The <a href="../../lib" data-coord="assgn.umt:318:17">lib</a> directory contains <samp data-coord="assgn.umt:318:40">npm</samp> packages which encapsulate
+solutions to the previous projects.
+</p><dl data-coord="assgn.umt:321:0"><dt data-coord="assgn.umt:321:2"> <a href="../../lib/ppm/ppm.js?colorize=true" data-coord="assgn.umt:321:39">ppm</a> </dt><dd data-coord="assgn.umt:322:0"><p data-coord="assgn.umt:322:4">This is essentially the same as the
+<a href="../prj2-sol/img-store/ppm.js?colorize=true" data-coord="assgn.umt:322:90">ppm.js</a> file you were
+provided with for your previous project.
+</p></dd><dt data-coord="assgn.umt:326:2"> <a href="../../lib/steg/steg.js?colorize=true" data-coord="assgn.umt:326:41">steg</a> </dt><dd data-coord="assgn.umt:327:0"><p data-coord="assgn.umt:327:4">This is a slightly modified version of the
+<samp data-coord="assgn.umt:327:95"><a href="../prj1-sol/steg_module.js?colorize=true" data-coord="assgn.umt:327:95">steg_module.js</a></samp> file
+from the solution for <em data-coord="assgn.umt:327:165"><a href="../prj1/assgn.html" data-coord="assgn.umt:327:165">Project 1</a></em>.  The
+changes include the following:
+</p><ul data-coord="assgn.umt:332:0"><li data-coord="assgn.umt:332:0"><p data-coord="assgn.umt:332:8">Instead of errors being returned as <samp data-coord="assgn.umt:332:44">error</samp> strings within
+wrapper return objects, errors are now thrown as <samp data-coord="assgn.umt:332:124">StegError</samp>
+objects containing <samp data-coord="assgn.umt:332:163">code</samp> and <samp data-coord="assgn.umt:332:174">message</samp> properties.
+</p></li><li data-coord="assgn.umt:336:0"><p data-coord="assgn.umt:336:8">Since errors are now being thrown, the wrapper objects around
+return values were no longer necessary and have been eliminated.
+</p></li><li data-coord="assgn.umt:339:0"><p data-coord="assgn.umt:339:8">Modifications to accomodate the changes made to <samp data-coord="assgn.umt:339:56">ppm.js</samp> between
+projects 1 and 2.
+</p></li></ul></dd><dt data-coord="assgn.umt:342:2"> <a href="../../lib/img-store/img-store.js?colorize=true" data-coord="assgn.umt:342:51">img-store</a> </dt><dd data-coord="assgn.umt:343:0"><p data-coord="assgn.umt:343:4">This is a slightly modified version of the
+<samp data-coord="assgn.umt:343:103"><a href="../prj2-sol/img-store/img-store.js?colorize=true" data-coord="assgn.umt:343:103">img-store.js</a></samp>
+file from the solution for <em data-coord="assgn.umt:343:171"><a href="../prj2/assgn.html" data-coord="assgn.umt:343:171">Project 2</a></em>.  The
+changes include the following:
+</p><ul data-coord="assgn.umt:348:0"><li data-coord="assgn.umt:348:0"><p data-coord="assgn.umt:348:8">The addition of new methods <samp data-coord="assgn.umt:348:36">clear()</samp> and <samp data-coord="assgn.umt:348:50">putBytes()</samp>.  The
+previous <samp data-coord="assgn.umt:348:86">put()</samp> method which is used to add the contents of
+an image file to the database becomes a wrapper around the
+new <samp data-coord="assgn.umt:348:203">putBytes()</samp> method which is used to add the bytes
+of the image to the database.
+</p></li><li data-coord="assgn.umt:354:0"><p data-coord="assgn.umt:354:8">The name for an image being added to the database is optional.
+When it is not specified, it is auto-generated by this module
+using consecutive integers starting from <samp data-coord="assgn.umt:354:183">0</samp>.  Note that this
+sequence of names is always reinitialized when this module
+is loaded.
+</p></li></ul></dd></dl><p data-coord="assgn.umt:361:0">These packages will need to be installed into your project just like
+external packages.  They are available as <samp data-coord="assgn.umt:361:111">.tar.gz</samp> bundles on the
+course web site.  The details for installing these packages are given
+at the start of the <a href="#hints" data-coord="assgn.umt:361:236">Hints</a> section.
+</p><p data-coord="assgn.umt:367:0">The <a href="./prj3/" data-coord="assgn.umt:367:15">prj3</a> directory contains a start for your
+project.  It contains the following files:
+</p><dl data-coord="assgn.umt:370:0"><dt data-coord="assgn.umt:370:4"> <a href="./prj3/steg-ws/.gitignore" data-coord="assgn.umt:370:31">.gitignore</a></dt><dd data-coord="assgn.umt:371:0"><p data-coord="assgn.umt:371:6">A <samp data-coord="assgn.umt:371:8">.gitignore</samp> file set up to tell <samp data-coord="assgn.umt:371:41">git</samp> to ignore
+the <samp data-coord="assgn.umt:371:67">node_modules</samp> directory.
+</p></dd><dt data-coord="assgn.umt:374:4"> <a href="./prj3/steg-ws/steg-ws.js?colorize=true" data-coord="assgn.umt:374:44">steg-ws.js</a></dt><dd data-coord="assgn.umt:375:0"><p data-coord="assgn.umt:375:6">A skeleton file.  You must complete the <samp data-coord="assgn.umt:375:46">TODO</samp> sections in this
+file.
+</p></dd><dt data-coord="assgn.umt:378:4"> <a href="./prj3/README" data-coord="assgn.umt:378:18">README</a></dt><dd data-coord="assgn.umt:379:0"><p data-coord="assgn.umt:379:6">A README file which must be submitted along with the project.
+It contains a initial header which you must complete; replace
+the dummy entries with your name, B-number and email address at
+which you would like to receive project-related email.  After
+completing the header, you may append any additional content
+which you would like read during the grading of your project.
+</p></dd><dt data-coord="assgn.umt:386:4"> <a href="./prj3/steg-ws/index.js?colorize=true" id="index.js" data-coord="assgn.umt:386:54">index.js</a></dt><dd data-coord="assgn.umt:387:0"><p data-coord="assgn.umt:387:6">A file which is used to start up the web server using
+express.js.  In addition to the required single <samp data-coord="assgn.umt:387:114">PORT</samp>
+command-line argument, it also allows additional arguments
+specifying paths to image files which are preloaded into
+the database.  These optional arguments may permit
+easier development.  
+</p><p data-coord="assgn.umt:394:6">Note that this file will clear the underlying database
+each time it is started.
+</p></dd></dl><p data-coord="assgn.umt:398:0">The <samp data-coord="assgn.umt:398:13"><a href="./aux" data-coord="assgn.umt:398:13">aux</a></samp> directory contains the following subdirectories:
+</p><dl data-coord="assgn.umt:400:0"><dt data-coord="assgn.umt:400:2"> <a href="aux/inputs" data-coord="assgn.umt:400:15">inputs</a> </dt><dd data-coord="assgn.umt:401:0"><p data-coord="assgn.umt:401:4">A directory which contains some image files in both PNG and PPM
+formats.
+</p></dd><dt data-coord="assgn.umt:404:2"> <a href="aux/outputs" data-coord="assgn.umt:404:16">outputs</a> </dt><dd data-coord="assgn.umt:405:0"><p data-coord="assgn.umt:405:4">A directory which contains image files containing hidden messages
+in both PNG and PPM formats.
+</p></dd><dt data-coord="assgn.umt:408:2"> <a href="aux/messages" data-coord="assgn.umt:408:17">messages</a> </dt><dd data-coord="assgn.umt:409:0"><p data-coord="assgn.umt:409:4">A directory with files containing messages to be hidden.  These
+include a vanilla <samp data-coord="assgn.umt:409:90">hello world</samp> message, a message which is the
+largest message which can be stored in the <samp data-coord="assgn.umt:409:183">rose</samp> image, and a
+message which just exceeds the length of the largest message which
+can be stored in the <samp data-coord="assgn.umt:409:299">rose</samp> image.
+</p></dd></dl><p data-coord="assgn.umt:415:0">Additionally, the <a href="./aux" data-coord="assgn.umt:415:27">aux</a> directory also contains a <a href="./aux/do-test.sh" data-coord="assgn.umt:415:77">do-test.sh</a> shell script which facilitates testing your project using
+the command-line.  It runs a basic test cycle over the web services.
+It is invoked using the following 3 command-line arguments:
+</p><dl data-coord="assgn.umt:420:0"><dt data-coord="assgn.umt:420:2"> <samp data-coord="assgn.umt:420:1">URL</samp> </dt><dd data-coord="assgn.umt:421:0"><p data-coord="assgn.umt:421:4">The base URL at which the web services are running.
+</p></dd><dt data-coord="assgn.umt:423:2"> <samp data-coord="assgn.umt:423:1">PPM_IMG_PATH</samp> </dt><dd data-coord="assgn.umt:424:0"><p data-coord="assgn.umt:424:4">A path to a file containing a PPM image.
+</p></dd><dt data-coord="assgn.umt:426:2"> <samp data-coord="assgn.umt:426:1">MSG_PATH</samp> </dt><dd data-coord="assgn.umt:427:0"><p data-coord="assgn.umt:427:4">A path to a file containing a message to be hidden.
+</p></dd></dl><p data-coord="assgn.umt:429:0">The script performs the following sequence of steps:
+</p><ol data-coord="assgn.umt:431:0"><li data-coord="assgn.umt:431:0"><p data-coord="assgn.umt:431:4">Uses the image store web service to store the image specified by
+<samp data-coord="assgn.umt:431:73">PPM_IMG_PATH</samp>.
+</p></li><li data-coord="assgn.umt:434:0"><p data-coord="assgn.umt:434:4">Uses the image retrieval web service to retrieve the image
+previously stored.
+</p></li><li data-coord="assgn.umt:437:0"><p data-coord="assgn.umt:437:4">Verifies that the retrieved image is identical to the original
+image specified by <samp data-coord="assgn.umt:437:90">PPM_IMG_PATH</samp>.
+</p></li><li data-coord="assgn.umt:440:0"><p data-coord="assgn.umt:440:4">Uses the message hide web service to hide the message specified by
+<samp data-coord="assgn.umt:440:75">MSG_PATH</samp> using the image stored earlier.
+</p></li><li data-coord="assgn.umt:443:0"><p data-coord="assgn.umt:443:4">Uses the message unhide service to retrieve the hidden message.
+</p></li><li data-coord="assgn.umt:445:0"><p data-coord="assgn.umt:445:4">Displays the JSON retrieved for the unhidden message; this is
+truncated for long messages.
+</p></li></ol></section><section data-coord="assgn.umt:449:0"><h2 data-coord="assgn.umt:449:0">Testing Web Services</h2><p data-coord="assgn.umt:452:0">There are two main methods for testing web services.
+</p><dl data-coord="assgn.umt:454:0"><dt data-coord="assgn.umt:454:2"> Using command-line tools </dt><dd data-coord="assgn.umt:455:0"><p data-coord="assgn.umt:455:4">This is exemplified by the use of
+<a href="https://linux.die.net/man/1/curl" data-coord="assgn.umt:455:78">curl</a> in this document.
+The advantages include easy automation; the disadvantages
+are that they are unintuitive and clumsy to use and often require the
+use of obscure options to obtain the required behavior.
+</p></dd><dt data-coord="assgn.umt:461:2"> Using GUI tools </dt><dd data-coord="assgn.umt:462:0"><p data-coord="assgn.umt:462:4">These are very intuitive to use with the use of a decent UI.
+<a href="https://restlet.com/" data-coord="assgn.umt:462:93">Restlet</a> is recommended for testing REST
+web services; there is a
+<a href="https://chrome.google.com/webstore/detail/restlet-client-rest-api-t/aejoelaoggembcahagimdiliamlcdmfm" data-coord="assgn.umt:462:274">client</a> available for Chrome.  It too allows storing and automation
+of tests.  In particular it does allow using <samp data-coord="assgn.umt:462:390">multipart/form-data</samp>
+requests.  This slightly dated
+<em data-coord="assgn.umt:462:538"><a href="http://restlet.com/company/blog/2015/10/19/api-testing-discover-restlet-client/" data-coord="assgn.umt:462:538">blog entry</a></em> provides details, including screen-shots.
+</p></dd></dl></section><section data-coord="assgn.umt:472:0"><h2 data-coord="assgn.umt:472:0">Working Project</h2><p data-coord="assgn.umt:476:0">A working version of this project is available at:
+</p><pre data-coord="assgn.umt:479:0">	http://zdu.binghamton.edu:1234
+</pre><p data-coord="assgn.umt:482:0">Please note that this URL is only reachable from within the campus
+network.  It may not be particularly stable; if you find it is
+unreachable, <a href="mailto:umrigar@binghamton.edu" data-coord="assgn.umt:482:176">email</a> me  and I will
+restart it.
+</p></section><section data-coord="assgn.umt:487:0"><h2 data-coord="assgn.umt:487:0">Hints</h2><p data-coord="assgn.umt:490:0"><span id="hints" data-coord="assgn.umt:490:9">The</span> following points are not prescriptive in that you may
+choose to ignore them as long as you meet all the project
+requirements.
+</p><p data-coord="assgn.umt:494:0">The actual number of lines of code you will need to write will
+probably be only around 100.  What you will need to do is look at
+online documentation to figure out the details.  The hints below start
+out by giving you detailed information and then get more vague so that
+you can discover stuff for yourself.
+</p><p data-coord="assgn.umt:500:0">The provided <a href="prj3/steg-ws/index.js?colorize=true" data-coord="assgn.umt:500:52">index.js</a> takes
+care of all command-line processing while the <a href="../../lib" data-coord="assgn.umt:500:126">lib</a>
+packages provide all the necessary PPM, image-store and steganography
+functionality.  All you need to do is implement the <samp data-coord="assgn.umt:500:252">TODO</samp>
+placeholders in the <a href="prj3/steg-ws/steg-ws.js?colorize=true" data-coord="assgn.umt:500:320">steg-ws.js</a> file.
+</p><p data-coord="assgn.umt:507:0">You may proceed as follows:
+</p><ol data-coord="assgn.umt:509:0"><li data-coord="assgn.umt:509:0"><p data-coord="assgn.umt:509:4">Study the
+<em data-coord="assgn.umt:509:58"><a href="../../slides/user-ws/user-ws.pdf" data-coord="assgn.umt:509:58">user web services</a></em> example which was covered in class.
+</p></li><li data-coord="assgn.umt:513:0"><p data-coord="assgn.umt:513:4">Familiarize yourself with <a href="https://expressjs.com/" data-coord="assgn.umt:513:56">express.js.</a>
+</p></li><li data-coord="assgn.umt:515:0"><p data-coord="assgn.umt:515:4">Familiarize yourself with the provided
+<a href="./prj3/steg-ws/steg-ws.js?colorize=true" data-coord="assgn.umt:515:90">steg-ws.js</a> skeleton
+file.  In particular, look at the fully implemented image
+meta-information service as well as the provided utility
+functions.
+</p></li><li data-coord="assgn.umt:521:0"><p data-coord="assgn.umt:521:4">Start your project by copying the <a href="prj3" data-coord="assgn.umt:521:46">prj3</a> directory to your
+<samp data-coord="assgn.umt:521:73">work</samp> directory.  Go into your newly created <samp data-coord="assgn.umt:521:119">steg-ws</samp> directory
+and initialize it using <samp data-coord="assgn.umt:521:167">npm init -y</samp>.  Then install the necessary
+packages:
+</p><ol data-coord="assgn.umt:526:0"><li data-coord="assgn.umt:526:0"><p data-coord="assgn.umt:526:8">Install local packages from <samp data-coord="assgn.umt:526:36">.tar.gz</samp> bundles on the
+course web site:
+</p><pre data-coord="assgn.umt:530:0">	$ npm install --save \
+	  http://zdu.binghamton.edu/cs580w/lib/img-store.tar.gz
+	$ npm install --save \
+	  http://zdu.binghamton.edu/cs580w/lib/ppm.tar.gz
+	$ npm install --save \
+	  http://zdu.binghamton.edu/cs580w/lib/steg.tar.gz
+</pre></li><li data-coord="assgn.umt:538:0"><p data-coord="assgn.umt:538:8">Install external packages:
+</p><pre data-coord="assgn.umt:541:0">	$ npm install --save express body-parser multer
+</pre><p data-coord="assgn.umt:544:8"><a href="https://expressjs.com/" data-coord="assgn.umt:544:34">express</a> is a web server framework;
+<a href="https://github.com/expressjs/body-parser" data-coord="assgn.umt:544:114">body-parser</a> is
+express.js middleware for parsing HTTP request bodies; since
+body-parser does not support parsing of <samp data-coord="assgn.umt:544:232">multipart/form-data</samp> bodies,
+that functionality is provided by the
+<a href="https://github.com/expressjs/multer" data-coord="assgn.umt:544:341">multer</a> package.
+</p></li></ol><p data-coord="assgn.umt:551:4">At this point, you should be able to run the image meta-information
+retrieval service:
+</p><pre>    $ AUX<span class="hl opt">=</span><span class="hl kwd">$HOME</span><span class="hl opt">/</span>cs580w<span class="hl opt">/</span>projects<span class="hl opt">/</span>prj3<span class="hl opt">/</span>aux
+    $ .<span class="hl opt">/</span>index.js <span class="hl num">1234</span> <span class="hl kwd">$AUX</span><span class="hl opt">/</span>inputs<span class="hl opt">/</span>rose.png <span class="hl opt">&amp;</span>
+    <span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]</span> <span class="hl num">9454</span>
+    $ rose.png<span class="hl opt">:</span> inputs<span class="hl opt">/</span>rose
+    listening on port <span class="hl num">1234</span>
+
+    $ curl <span class="hl opt">--</span>silent http<span class="hl opt">://</span>localhost<span class="hl opt">:</span><span class="hl num">1234</span><span class="hl opt">/</span>api<span class="hl opt">/</span>images<span class="hl opt">/</span>inputs<span class="hl opt">/</span>rose<span class="hl opt">/</span>meta
+      <span class="hl opt">{</span><span class="hl str">&quot;creationTime&quot;</span><span class="hl opt">:</span><span class="hl num">152130</span>... nHeaderBytes<span class="hl str">&quot;:13}</span>
+<span class="hl str">    $</span></pre></li><li data-coord="assgn.umt:567:0"><p data-coord="assgn.umt:567:4">Start by implementing the <em data-coord="assgn.umt:567:42"><a href="#img-get" data-coord="assgn.umt:567:42">image retrieval service</a></em>.
+</p><ol data-coord="assgn.umt:569:0"><li data-coord="assgn.umt:569:0"><p data-coord="assgn.umt:569:8">Add code to set up a suitable route <samp data-coord="assgn.umt:569:44">setupRoutes()</samp>.  Note
+that express.js patterns can even be used to match <strong data-coord="assgn.umt:569:125">within</strong>
+path components.
+</p></li><li data-coord="assgn.umt:573:0"><p data-coord="assgn.umt:573:8">Add code to the <samp data-coord="assgn.umt:573:24">getImage()</samp> handler.  Set up error handling
+exactly as done for <samp data-coord="assgn.umt:573:96">getMeta()</samp>.  Your action code will simply
+need to retrieve the image bytes using a suitable img-store
+method and <a href="http://expressjs.com/en/api.html#res.send" data-coord="assgn.umt:573:269">return</a>
+those bytes as binary.  You will need to set the
+<samp data-coord="assgn.umt:573:339">Content-Type</samp> of the response depending on the image type you
+are returning; express.js's
+<a href="http://expressjs.com/en/api.html#res.type" data-coord="assgn.umt:573:489">res.type()</a> makes
+this trivial.
+</p></li></ol><p data-coord="assgn.umt:583:5">You can test your changes by using the extra arguments facility
+of <a href="#index.js" data-coord="assgn.umt:583:90">index.js</a> to preload image files into the
+database.
+</p></li><li data-coord="assgn.umt:587:0"><p data-coord="assgn.umt:587:4">Proceeding as in the previous step, add code for the <em data-coord="assgn.umt:587:74"><a href="#img-list" data-coord="assgn.umt:587:74">image list service</a></em>.
+</p></li><li data-coord="assgn.umt:590:0"><p data-coord="assgn.umt:590:4">Now attempt the <em data-coord="assgn.umt:590:35"><a href="#msg-unhide" data-coord="assgn.umt:590:35">message unhide service</a></em>.  You will
+need to retrieve the image bytes from the image store and create a
+new <samp data-coord="assgn.umt:590:150">Steg</samp> object on those bytes and then use its unhide method.
+You can use express.js's
+<a href="http://expressjs.com/en/api.html#res.json" data-coord="assgn.umt:590:289">res.json()</a> method to
+take care of sending the response; this will automatically take
+care of setting up the <samp data-coord="assgn.umt:590:405">Content-Type</samp> header.
+</p><p data-coord="assgn.umt:598:4">You can test this service by preloading your server with the
+steg'd image contained in the <a href="aux/outputs" data-coord="assgn.umt:598:114">outputs</a> directory.
+</p></li><li data-coord="assgn.umt:601:0"><p data-coord="assgn.umt:601:4">Now work on the <em data-coord="assgn.umt:601:33"><a href="#msg-hide" data-coord="assgn.umt:601:33">message hide service</a></em>.  Since the
+request body uses JSON, you will need to set up a JSON parser as
+middeware for this service.
+</p></li><li data-coord="assgn.umt:605:0"><p data-coord="assgn.umt:605:4">Finally implement the <em data-coord="assgn.umt:605:40"><a href="#img-store" data-coord="assgn.umt:605:40">image store service</a></em>. You will
+need to use the <a href="https://github.com/expressjs/multer" data-coord="assgn.umt:605:131">multer</a>
+middleware to parse the <samp data-coord="assgn.umt:605:166">multipart/form-data</samp> request body.  You can
+choose to store the uploaded image in either memory or a temporary
+file.  Note that the <samp data-coord="assgn.umt:605:307">multer</samp> API allows you to access the
+<samp data-coord="assgn.umt:605:349">originalname</samp> of the file; you can use this to determine the
+image type.  
+</p></li><li data-coord="assgn.umt:613:0"><p data-coord="assgn.umt:613:4">Iterate until you meet all requirements.  Verify that you
+detect errors and return appropriate error messages.
+</p></li></ol></section><section data-coord="assgn.umt:616:0"><h2 data-coord="assgn.umt:616:0">Late Submissions</h2><p data-coord="assgn.umt:619:0">If you are submitting the project late, please adhere to the new late
+submission policy announced a few weeks ago.  Specifically, please
+<a href="mailto:umrigar@binghamton.edu" data-coord="assgn.umt:619:170">email</a> me a message before the due
+date, followed by another one once you have completed the project.
+</p></section></section>
+</div> <!-- #content -->
+</div> <!-- #main -->
+<div id="footer">&nbsp;</div>
+</div> <!-- #page -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../../assets/scripts/nav.js"></script>
+</body>
+</html>
