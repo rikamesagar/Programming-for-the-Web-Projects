@@ -109,7 +109,17 @@ function getMeta(app) {
  */
 function listImages(app) {
   return async function(req, res) {
-    //TODO
+    try{
+      //TODO
+      const {group, name} = req.params;
+      const store = await imgStore()
+      const list = await store.list(group)
+      console.log("List Image "+list)
+      res.status(OK).json(list)
+    }catch(e){
+      const mapped = mapError(err);
+      res.status(mapped.status).json(mapped);
+    }
   }
 }
 
