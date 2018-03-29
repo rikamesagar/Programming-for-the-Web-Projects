@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const upload = multer();
-
+var storage = multer.memoryStorage()
+var upload = multer({ storage: storage })
+const imgStore = require('./img_store.js');
 const Steg = require('steg');
 const Ppm = require('ppm');
 
@@ -43,11 +44,11 @@ const IMG_FIELD = 'img';
 function setupRoutes(app) {
   const base = app.locals.base;
   app.get(`${base}/${IMAGES}/:group/:name/meta`, getMeta(app));
-  //TODO: add routes with middleware and handlers for other services.
-    app.get(`${base}/${IMAGES}/:group`, listImages(app));
+  app.get(`${base}/${IMAGES}/:group`, listImages(app));
   app.post(`${base}/${IMAGES}/:group`,upload.single('img'), createImage(app))
   app.get(`${base}/${IMAGES}/:group/:name`, getImage(app));  
   app.route(`${base}/${STEG}/:group/:name`).get(stegUnhide(app)).post(stegHide(app));
+  //TODO: add routes with middleware and handlers for other services.
 }
 
 /************************** Image Services *****************************/
@@ -77,7 +78,7 @@ function createImage(app) {
       const ret_name = await store.putBytes(group, new Uint8Array(req.file.buffer), type, fileName)
       res.status(OK)
     }catch(e){
-      const mapped = mapError(err);
+      const mapped = mapError(e);
       res.status(mapped.status).json(mapped);
     }
   };
@@ -169,6 +170,23 @@ function listImages(app) {
 function stegHide(app) {
   return async function(req, res) {
     //TODO
+    try{
+      const {group, name} = req.params;
+      const {msg, outGroup} = req.body;
+      const fileName = name.split('.').slice(0,-1).join('.');
+      const type = name.split('.').slice(-1)[0];
+      const store = await imgStore()
+      const fileBuffer = store.get(group, fileName, type)
+      const ppmImage = new Ppm(fileBuffer)
+      const steg = new Steg(ppmImage)
+      const hiddenImage = steg.hide(msg)
+      const ret_name = await store.putBytes(outGroup, new Uint8Array(hiddenImage), type, fileName)
+      console.log("Steg Image")
+      res.status(OK).json(list)
+    }catch(err){
+      const mapped = mapError(err);
+      res.status(mapped.status).json(mapped);
+    }
   };
 }
 
@@ -181,6 +199,16 @@ function stegHide(app) {
 function stegUnhide(app) {
   return async function(req, res) {
     //TODO
+    const {group, name} = req.params;
+    const {msg, outGroup} = req.body;
+    const fileName = name.split('.').slice(0,-1).join('.');
+    const type = name.split('.').slice(-1)[0];
+    const store = await imgStore()
+    const fileBuffer = store.get(group, fileName, type)
+    const ppmImage = new Ppm(fileBuffer)
+    const steg = new Steg(ppmImage)
+    const message = steg.unhide()
+    console.log("Steg Hide Image")
   };
 }
 
