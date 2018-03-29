@@ -64,6 +64,18 @@ function setupRoutes(app) {
 function createImage(app) {
   return async function(req, res) {
     //TODO
+    try{
+      const {group, name} = req.params;
+      const ogFileName = req.file.originalname
+      const fileName = ogFileName.split('.').slice(0,-1).join('.');
+      const type = ogFileName.split('.').slice(-1)[0];
+      const store = await imgStore()
+      const ret_name = await store.putBytes(group, new Uint8Array(req.file.buffer), type, fileName)
+      res.status(OK)
+    }catch(e){
+      const mapped = mapError(err);
+      res.status(mapped.status).json(mapped);
+    }
   };
 }
 
@@ -76,6 +88,17 @@ function createImage(app) {
 function getImage(app) {
   return async function(req, res) {
     //TODO
+    try{
+      const {group, name} = req.params;
+      const fileName = name.split('.').slice(0,-1).join('.');
+      const type = name.split('.').slice(-1)[0];
+      const store = await imgStore()
+      const bytes = await store.get(group, fileName, type)
+      res.status(OK).json(meta);
+    }catch(e){
+      const mapped = mapError(e);
+      res.status(mapped.status).json(mapped);
+    }
   };
 }
 
