@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 var storage = multer.memoryStorage()
 var upload = multer({ storage: storage })
-const imgStore = require('./img_store.js');
+const imgStore = require('img-store');
 const Steg = require('steg');
 const Ppm = require('ppm');
 
