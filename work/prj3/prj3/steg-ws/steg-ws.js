@@ -44,6 +44,10 @@ function setupRoutes(app) {
   const base = app.locals.base;
   app.get(`${base}/${IMAGES}/:group/:name/meta`, getMeta(app));
   //TODO: add routes with middleware and handlers for other services.
+    app.get(`${base}/${IMAGES}/:group`, listImages(app));
+  app.post(`${base}/${IMAGES}/:group`,upload.single('img'), createImage(app))
+  app.get(`${base}/${IMAGES}/:group/:name`, getImage(app));  
+  app.route(`${base}/${STEG}/:group/:name`).get(stegUnhide(app)).post(stegHide(app));
 }
 
 /************************** Image Services *****************************/
