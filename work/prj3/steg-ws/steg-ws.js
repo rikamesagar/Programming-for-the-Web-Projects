@@ -76,9 +76,15 @@ function createImage(app) {
       const {group, name} = req.params;
       const ogFileName = req.file.originalname
       const fileName = ogFileName.split('.').slice(0,-1).join('.');
+
       const type = ogFileName.split('.').slice(-1)[0];
 //      const store = await imgStore()
-      const ret_name = await app.locals.images.putBytes(group, new Uint8Array(req.file.buffer), type, )
+
+//	console.log(ofFileName);
+	console.log(fileName);
+	console.log(type);
+
+      const ret_name = await app.locals.images.putBytes(group, new Uint8Array(req.file.buffer), type )
 //      res.status(OK)
 //	res.status(json(mapped))
 	const output=app.locals.base+"/"+IMAGES+"/"+group+"/"+ret_name+"."+type;
