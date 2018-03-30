@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var jsonParser = bodyParser.json()
 const multer = require('multer');
 const upload = multer();
 
@@ -46,10 +47,9 @@ const base = app.locals.base;
   app.get(`${base}/${IMAGES}/:group`, listImages(app));
   app.post(`${base}/${IMAGES}/:group`,upload.single('img'), createImage(app))
   app.get(`${base}/${IMAGES}/:group/:name`, getImage(app));
-  app.route(`${base}/${STEG}/:group/:name`).get(stegUnhide(app)).post(stegHide(app));
-
-
-
+//  app.route(`${base}/${STEG}/:group/:name`).get(stegUnhide(app)).post(stegHide(app));
+  app.post(`${base}/${STEG}/:group/:name`, jsonParser, stegHide(app));
+  app.get(`${base}/${STEG}/:group/:name`, jsonParser, stegUnhide(app));
   //TODO: add routes with middleware and handlers for other services.
 }
 
@@ -87,9 +87,10 @@ function createImage(app) {
       const ret_name = await app.locals.images.putBytes(group, new Uint8Array(req.file.buffer), type )
 //      res.status(OK)
 //	res.status(json(mapped))
-	const output=app.locals.base+"/"+IMAGES+"/"+group+"/"+ret_name+"."+type;
+	const output=requestUrl(req)+app.locals.base+"/"+IMAGES+"/"+group+"/"+ret_name+"."+type;
 	res.location(output);
 	res.sendStatus(CREATED);
+	console.log("\n")
     }catch(e){
       const mapped = mapError(e);
       res.status(mapped.status).json(mapped);
@@ -173,37 +174,31 @@ try{
 /** This service is used for hiding a message in the image specified
  *  by its request URL.  It requires a JSON request body with a 
  *  parameter "msg" giving the message to be hidden and a "outGroup"
- *  parameter giving the group of the image being created.  The message
- *  will be hidden in a new image with group set to the value of
- *  "outGroup" and a auto-generated name.
- *
- *  If everything is ok, set the status of the response to CREATED
- *  with Location header set to the URL which can be used to unhide
- *  the hidden message.  If not ok, set response status to a suitable
- *  HTTP error status and return JSON object with "code" and "message"
- *  properties giving error details.
+ *  parameter giving the group of the image being created.
  */
 function stegHide(app) {
   return async function(req, res) {
     //TODO
+     try {
+     const {msg, outGroup} = req.body;
+     const {group, name} = req.params;
+     const imgBytes = await app.locals.images.get(group, name, "ppm");
+     const ppmImage = new Ppm(name,new Uint8Array(imgBytes));
+     const steg = new Steg(ppmImage);
+     const hiddenImage = await steg.hide(msg);
+     const ret_name = await app.locals.images.putBytes(outGroup,new Uint8Array(hiddenImage.bytes),"ppm", );
+     const output = "http:\/\/localhost"+":"+app.locals.port+app.locals.base+"/"+STEG+"/outputs/"+ret_name;
+     res.location(output);
+     res.status(CREATED);
+     res.end();
+//     res.status(CREATED);
 
-try{
-const {group, name} = req.params;
-const {msg, outGroup} = req.body;
-const bytes = await app.locals.images.get(group, name, "ppm")
-console.log("Name "+name)
-const ppmImage = new Ppm(name, new Uint8Array(bytes))
-const steg = new Steg(ppmImage)
-const hiddenImage = steg.hide(msg)
-const ret_name = await app.locals.images.putBytes(outGroup, new Uint8Array(hiddenImage), "ppm", name)
-const output=app.locals.base+"/"+IMAGES+"/"+group+"/"+ret_name+"."+type;
-res.location(output);
-res.sendStatus(CREATED);
-}catch(err){
-const mapped = mapError(err);
-res.status(mapped.status).json(mapped);
-}
-
+//     console.log("\n");
+     }
+    catch (err) {
+      const mapped = mapError(err);
+      res.status(mapped.status).json(mapped);
+    }
   };
 }
 
@@ -216,16 +211,23 @@ res.status(mapped.status).json(mapped);
 function stegUnhide(app) {
   return async function(req, res) {
     //TODO
+   try{
     const {group, name} = req.params;
-    const {msg, outGroup} = req.body;
-    const fileName = name.split('.').slice(0,-1).join('.');
-    const type = name.split('.').slice(-1)[0];
+//    const {msg, outGroup} = req.body;
+//    const fileName = name.split('.').slice(0,-1).join('.');
+//    const type = name.split('.').slice(-1)[0];
 //    const store = await imgStore()
-    const fileBuffer = store.get(group, fileName, type)
-    const ppmImage = new Ppm(fileBuffer)
+    const fileBuffer = await app.locals.images.get(group, name, "ppm")
+    const ppmImage = new Ppm(name, new Uint8Array(fileBuffer))
     const steg = new Steg(ppmImage)
     const message = steg.unhide()
-    console.log("Steg Hide Image")
+//    console.log("Steg Hide Image")
+    res.status(OK).send({msg : message});
+    }
+    catch(err){
+      const mapped = mapError(err);
+      res.status(mapped.status).json(mapped);
+    }
   };
 }
 
