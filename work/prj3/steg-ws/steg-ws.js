@@ -188,22 +188,22 @@ function stegHide(app) {
     //TODO
 
 try{
-      const {group, name} = req.params;
-      const {msg, outGroup} = req.body;
-      const fileName = name.split('.').slice(0,-1).join('.');
-      const type = name.split('.').slice(-1)[0];
-      const store = await imgStore()
-      const fileBuffer = store.get(group, fileName, type)
-      const ppmImage = new Ppm(fileBuffer)
-      const steg = new Steg(ppmImage)
-      const hiddenImage = steg.hide(msg)
-      const ret_name = await store.putBytes(outGroup, new Uint8Array(hiddenImage), type, )
-      console.log("Steg Image")
-      res.status(OK).json(list)
-    }catch(err){
-      const mapped = mapError(err);
-      res.status(mapped.status).json(mapped);
-    }
+const {group, name} = req.params;
+const {msg, outGroup} = req.body;
+const bytes = await app.locals.images.get(group, name, "ppm")
+console.log("Name "+name)
+const ppmImage = new Ppm(name, new Uint8Array(bytes))
+const steg = new Steg(ppmImage)
+const hiddenImage = steg.hide(msg)
+const ret_name = await app.locals.images.putBytes(outGroup, new Uint8Array(hiddenImage), "ppm", name)
+const output=app.locals.base+"/"+IMAGES+"/"+group+"/"+ret_name+"."+type;
+res.location(output);
+res.sendStatus(CREATED);
+}catch(err){
+const mapped = mapError(err);
+res.status(mapped.status).json(mapped);
+}
+
   };
 }
 
