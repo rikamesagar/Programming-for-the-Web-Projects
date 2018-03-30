@@ -51,7 +51,6 @@ const base = app.locals.base;
 
 function createImage(app) {
   return async function(req, res) {
-    //TODO
   try{
       const {group, name} = req.params;
       const ogFileName = req.file.originalname
