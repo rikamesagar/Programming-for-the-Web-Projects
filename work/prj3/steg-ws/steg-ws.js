@@ -68,9 +68,26 @@ const base = app.locals.base;
  *  HTTP error status and return JSON object with "code" and "message"
  *  properties giving error details.
  */
+
 function createImage(app) {
   return async function(req, res) {
     //TODO
+  try{
+      const {group, name} = req.params;
+      const ogFileName = req.file.originalname
+      const fileName = ogFileName.split('.').slice(0,-1).join('.');
+      const type = ogFileName.split('.').slice(-1)[0];
+//      const store = await imgStore()
+      const ret_name = await app.locals.images.putBytes(group, new Uint8Array(req.file.buffer), type, )
+//      res.status(OK)
+//	res.status(json(mapped))
+	const output=app.locals.base+"/"+IMAGES+"/"+group+"/"+ret_name+"."+type;
+	res.location(output);
+	res.sendStatus(CREATED);
+    }catch(e){
+      const mapped = mapError(e);
+      res.status(mapped.status).json(mapped);
+    }
   };
 }
 
@@ -80,6 +97,7 @@ function createImage(app) {
  *  error status and return JSON object with "code" and "message"
  *  properties giving error details.
  */
+
 function getImage(app) {
   return async function(req, res) {
     //TODO
@@ -140,12 +158,6 @@ try{
       const mapped = mapError(err);
       res.status(mapped.status).json(mapped);
     }
-
-
-
-
-
-
   }
 }
 
@@ -168,6 +180,24 @@ try{
 function stegHide(app) {
   return async function(req, res) {
     //TODO
+
+try{
+      const {group, name} = req.params;
+      const {msg, outGroup} = req.body;
+      const fileName = name.split('.').slice(0,-1).join('.');
+      const type = name.split('.').slice(-1)[0];
+      const store = await imgStore()
+      const fileBuffer = store.get(group, fileName, type)
+      const ppmImage = new Ppm(fileBuffer)
+      const steg = new Steg(ppmImage)
+      const hiddenImage = steg.hide(msg)
+      const ret_name = await store.putBytes(outGroup, new Uint8Array(hiddenImage), type, )
+      console.log("Steg Image")
+      res.status(OK).json(list)
+    }catch(err){
+      const mapped = mapError(err);
+      res.status(mapped.status).json(mapped);
+    }
   };
 }
 
@@ -180,6 +210,16 @@ function stegHide(app) {
 function stegUnhide(app) {
   return async function(req, res) {
     //TODO
+    const {group, name} = req.params;
+    const {msg, outGroup} = req.body;
+    const fileName = name.split('.').slice(0,-1).join('.');
+    const type = name.split('.').slice(-1)[0];
+//    const store = await imgStore()
+    const fileBuffer = store.get(group, fileName, type)
+    const ppmImage = new Ppm(fileBuffer)
+    const steg = new Steg(ppmImage)
+    const message = steg.unhide()
+    console.log("Steg Hide Image")
   };
 }
 
@@ -224,7 +264,7 @@ function mapError(err) {
 	code: 'INTERNAL',
 	message: err.toString()
       };
-} 
+}
 
 /** Return URL (including host and port) for HTTP request req.
  *  Useful for producing Location headers.
@@ -234,4 +274,3 @@ function requestUrl(req) {
   const url = req.originalUrl.replace(/\/$/, '');
   return `${req.protocol}://${req.hostname}:${port}${url}`;
 }
-  
