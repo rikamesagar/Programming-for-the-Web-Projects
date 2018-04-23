@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="/static/css/hide.css" />
+</head>
+<body>
+    <div id="main-container">
+        <form enctype="multipart/form-data" action="http://localhost:4000/hide" method="POST">
+            <div id="top-container">
+                <input name="message" type="text" id="txt-input" placeholder="Type a message to hide in the image."/>
+                <span id="or">OR</span>
+                <input type="file" name="file_msg" id="file" />
+            </div>
+            <div id="bottom-container">
+                {{#images}}
+                    <div class="container">
+                        <input type="radio" name="image" value="{{name}}" />
+                        <img src={{url}} />
+                    </div>
+                {{/images}}
+            </div>
+            <input type="submit" />
+        </form>
+    <div>
+</body>
+</html>
