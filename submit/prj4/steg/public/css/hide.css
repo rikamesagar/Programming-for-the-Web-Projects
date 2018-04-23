@@ -1,0 +1,69 @@
+body{
+    background: #fff;
+    margin: 0;
+}
+
+#main-container{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #d84d8c;
+}
+
+#top-container{
+    height: 30%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#top-container #txt-input{
+    position: absolute;
+    display: flex;
+    bottom: 50;
+    height: 50px;
+    width: 80%;
+    border-radius: 10px;
+    border: 5px solid #222;
+    padding: 5px;
+    font-size: 1em;
+    font-family: sans-serif;
+}
+
+#or{
+    position: absolute;
+    bottom: 30;
+    font-family: sans-serif;
+    color: white;
+    font-weight: bold;
+
+}
+
+#file{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+}
+
+#bottom-container{
+    margin: 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.container img {
+    object-fit : contain;
+    max-width : 100%;
+    max-height : 100%;
+    width : auto;
+    height : auto;
+}
