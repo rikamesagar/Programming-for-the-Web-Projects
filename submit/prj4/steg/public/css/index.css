@@ -1,0 +1,44 @@
+body {
+    background: #fff;
+    margin: 0;
+}
+
+#main-container{
+    display: flex;
+    flex-grow: 1;
+}
+
+#main-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background: #3aafa9;
+    color: #222;
+}
+
+#main-container a span {
+    font-size: 3em;
+    font-family: sans-serif;
+}
+
+#left-container{
+    position: relative;
+    width: 49%;
+    height: 100%;
+    left: 0;
+}
+
+#main-container a:hover{
+    color: #fff;
+    background: #17262a;
+    font-size: 3.2em;
+    transition: font-size 1s;
+}
+
+#right-container{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    border-left: 1px solid #222;   
+}
