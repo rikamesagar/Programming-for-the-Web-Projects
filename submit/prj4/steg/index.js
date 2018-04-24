@@ -1,5 +1,4 @@
 #!/usr/bin/env nodejs
-
 'use strict';
 
 const path = require('path');
@@ -29,7 +28,6 @@ const app = express()
 app.locals.port = 4000;
 setupRoutes(app)
 app.use('/static', express.static('public'))
-//app.use(bodyParser.json())
 app.listen(4000, function(){
     console.log(`listening on port ${4000}`)
 })
@@ -49,23 +47,38 @@ function setupRoutes(app){
 
 async function hide(req, res){
     try{
-        if(req.body && req.file){
+        if(req.body){
             console.log("In first")
             const fileMessage = req.file;
-            const messageFile = Buffer.from(fileMessage.buffer, 'binary').toString('utf8')
+            let messageFile = undefined
+            if(req.file)
+                messageFile = Buffer.from(fileMessage.buffer, 'binary').toString('utf8')
+
             const {message, image} = req.body;
             if(fileMessage && message){
                 console.log("ERROR: Two messages")
+                const msg = "Two messages entered";
+                const base = fs.readFileSync(resolve(templatePath, 'error', 'hide.mustache'))
+                res.send(Mustache.render(base.toString('utf8'), {msg}))
             }
             const msg = messageFile || message
+            if(msg === undefined || image === undefined || msg === "")
+            {
+                const msg = image ===undefined ? "No Image Selected" : "No Message Entered"
+
+                const base = fs.readFileSync(resolve(templatePath, 'error', 'error.mustache'))
+                res.send(Mustache.render(base.toString('utf8'), {msg}))
+            }
             const hideResult = await axios.post(`${serviceBase}/api/steg/inputs/${image}`,{outGroup:"output", msg: msg})
             console.log(hideResult.status)
             if(hideResult.status===201){
+                const msg = "Message Hidden Successefully ";
                 const base = fs.readFileSync(resolve(templatePath, 'success', 'success.mustache'))
-                res.send(Mustache.render(base.toString('utf8'), {}))
+                res.send(Mustache.render(base.toString('utf8'), {msg}))
             }else{
+                const msg = "Error occurred"
                 const base = fs.readFileSync(resolve(templatePath, 'error', 'error.mustache'))
-                res.send(Mustache.render(base.toString('utf8'), {}))
+                res.send(Mustache.render(base.toString('utf8'), {msg}))
             }
         }else{
             console.log("Making request "+`${serviceBase}/api/images/inputs`)
@@ -73,9 +86,7 @@ async function hide(req, res){
             const images = await Promise.all(result.data.map(async (e, key)=>{
                 const imageResult = await axios.get(`${serviceBase}/api/images/inputs/${e}.png`,
                 {responseType:"arraybuffer"})
-                //fs.writeFileSync(`${imagePath}/images/${e}.png`, imageResult.data)
-                const base64 = Buffer.from(imageResult.data, 'binary').toString('base64')
-                //const base64 = base64_arraybuffer.encode(imageResult.data)   
+                const base64 = Buffer.from(imageResult.data, 'binary').toString('base64')   
                 console.log(e);         
                 return {name: e, url:`data:image/png;base64,${base64}`}
             }))
@@ -83,9 +94,9 @@ async function hide(req, res){
             res.send(Mustache.render(base.toString('utf8'), {images: images}))
         }
     }catch(e){
-        console.log("Error: \n"+e)
+        const msg = e.toString();
         const base = fs.readFileSync(resolve(templatePath, 'error', 'error.mustache'))
-        res.send(Mustache.render(base.toString('utf8'), {}))
+                res.send(Mustache.render(base.toString('utf8'), {msg}))
     }
 
 }
@@ -94,6 +105,12 @@ async function unhide(req, res){
     try{
         if(req.body){
             const { image } = req.body
+            if(image === undefined)
+            {
+                const msg = "Image not selected";
+                const base = fs.readFileSync(resolve(templatePath, 'error', 'error.mustache'))
+                res.send(Mustache.render(base.toString('utf8'), {msg}))    
+            }
             console.log("Body "+Object.keys(req.body), req.body)
             const unhideResult = await axios.get(`${serviceBase}/api/steg/output/${image}`)
             console.log("Hidden message "+ unhideResult.data.msg)
@@ -105,9 +122,7 @@ async function unhide(req, res){
             const images = await Promise.all(result.data.map(async (e, key)=>{
                 const imageResult = await axios.get(`${serviceBase}/api/images/output/${e}.png`,
                 {responseType:"arraybuffer"})
-                //fs.writeFileSync(`${imagePath}/images/${e}.png`, imageResult.data)
                 const base64 = Buffer.from(imageResult.data, 'binary').toString('base64')
-                //const base64 = base64_arraybuffer.encode(imageResult.data)   
                 console.log(e);         
                 return {name: e, url:`data:image/png;base64,${base64}`}
             }))
@@ -115,8 +130,8 @@ async function unhide(req, res){
             res.send(Mustache.render(base.toString('utf8'), {images: images}))
         }
     }catch(err){
-        console.log("Error: \n"+e)
+        const msg = err.toString();
         const base = fs.readFileSync(resolve(templatePath, 'error', 'error.mustache'))
-        res.send(Mustache.render(base.toString('utf8'), {}))
+        res.send(Mustache.render(base.toString('utf8'), {msg}))
     }
 }
