@@ -5,7 +5,7 @@
 </head>
 <body>
     <div id="main-container">
-        <form enctype="multipart/form-data" action="http://localhost:4000/hide" method="POST">
+        <form enctype="multipart/form-data" action="http://localhost:{{port}}/hide" method="POST">
             <div id="top-container">
                 <input name="message" type="text" id="txt-input" value="{{form.txtMessage}}" placeholder="Type a message to hide in the image."/>
                 <span id="or">OR</span>
@@ -19,13 +19,15 @@
                     </div>
                 {{/images}}
             </div>
-            <input type="submit" />
-            <input type="reset" />
+            <input type="submit" /><br>
             <a href="/index.html" id="home">Home</a>
         </form>
+        {{#error}}
+        <h3>Error Logs</h3>
         <div>
             {{error}}
         </div>
-    <div>
+        {{/error}}
+    </div>
 </body>
 </html>

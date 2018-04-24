@@ -15,6 +15,7 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const upload = multer();
+const assert = require('assert');
 
 const OK = 200;
 const CREATED = 201;
@@ -23,15 +24,41 @@ const NOT_FOUND = 404;
 const CONFLICT = 409;
 const SERVER_ERROR = 500;
 
-const serviceBase = "http://localhost:1234"
+let port;
+
+let serviceBase;
+
+function usage() {
+    console.error(`usage: ${process.argv[1]} PORT WS_BASE_URL`);
+    process.exit(1);
+  }
+
+  function getPort(portArg) {
+    let port = Number(portArg);
+    if (!port) usage();
+    return port;
+  }
+
+  const BASE = '/api';
+
+async function go(args) {
+  try {
+    port = getPort(args[0]);
+    serviceBase = args[1];
+  }
+  catch (err) {
+    console.error(err);
+  }
+} 
+
+if (process.argv.length != 4) usage();
+go(process.argv.slice(2));
 
 const app = express()
-app.locals.port = 4000;
 setupRoutes(app)
 app.use('/static', express.static('public'))
-//app.use(bodyParser.json())
-app.listen(4000, function(){
-    console.log(`listening on port ${4000}`)
+app.listen(port, function(){
+    console.log(`listening on port ${port}`)
 })
 
 
@@ -57,45 +84,56 @@ async function hide(req, res){
             const {message, image} = req.body;
             if(fileMessage && message){
                 const msg = "Two messages entered";
-                hideError(msg,res,{txtMessage: message, selectedImage: image})
+                return hideError(msg,res,{txtMessage: message, selectedImage: image})
             }
             const msg = messageFile || message
             if(msg === undefined || image === undefined || msg === "")
             {
                 const msg = image ===undefined ? "No Image Selected" : "No Message Entered"
-                hideError(msg, res, {txtMessage: message, selectedImage: image})
+                return hideError(msg, res, {txtMessage: message, selectedImage: image})
             }
             const hideResult = await axios.post(`${serviceBase}/api/steg/inputs/${image}`,{outGroup:"outputs", msg: msg})
             if(hideResult.status===201){
                 const base = fs.readFileSync(resolve(templatePath, 'success', 'success.mustache'))
-                res.send(Mustache.render(base.toString('utf8'), {hide:"/hide"}))
+                return res.send(Mustache.render(base.toString('utf8'), {hide:"/hide"}))
             }else{
                 const base = fs.readFileSync(resolve(templatePath, 'hide', 'hide.mustache'))
-                res.send(Mustache.render(base.toString('utf8'), {form:{}, error:e.toString()}))
+                return res.send(Mustache.render(base.toString('utf8'), {form:{}, error:e.toString(), port:`${port}`}))
             }
         }else{
             const images = await getImages(undefined, 'inputs');
             const base = fs.readFileSync(resolve(templatePath, 'hide', 'hide.mustache'))
-            res.send(Mustache.render(base.toString('utf8'), {images: images}))
+            return res.send(Mustache.render(base.toString('utf8'), {images: images, port:`${port}`}))
         }
     }catch(e){
         const {message, image} = req.body || {message: undefined, image: undefined};
-        hideError(e.toString(), res,{txtMessage: message, selectedImage: image})
+        return hideError(e.toString(), res,{txtMessage: message, selectedImage: image})
     }
 }
 async function hideError(e, res, form){
+    try{
     const images = await getImages(form.selectedImage, 'inputs')
     const base = fs.readFileSync(resolve(templatePath, 'hide', 'hide.mustache'))
-    res.send(Mustache.render(base.toString('utf8'), 
-    {form:{txtMessage: form.txtMessage, selectedImage: form.selectedImage}, error:e.toString(), images: images}))
+    return res.send(Mustache.render(base.toString('utf8'), 
+    {form:{txtMessage: form.txtMessage, selectedImage: form.selectedImage}, error:e.toString(), images: images, port:`${port}`}))
+    }
+    catch(err){
+        return err;
+    }
 }
 async function unhideError(e, res, form){
+    try{
     const images = await getImages(form.selectedImage, 'outputs')
     const base = fs.readFileSync(resolve(templatePath, 'unhide', 'unhide.mustache'))
-    res.send(Mustache.render(base.toString('utf8'), 
-    {form:{selectedImage: form.selectedImage}, error:e.toString(), images: images}))
+    return res.send(Mustache.render(base.toString('utf8'), 
+    {form:{selectedImage: form.selectedImage}, error:e.toString(), images: images, port:`${port}`}))
+    }
+    catch(e){
+        return e;
+    }
 }
 async function getImages(selectedImage, group){
+    try{
     const result = await axios.get(`${serviceBase}/api/images/${group}`) 
     const images = await Promise.all(result.data.map(async (imageName, key)=>{
         const imageResult = await axios.get(`${serviceBase}/api/images/${group}/${imageName}.png`,
@@ -105,6 +143,11 @@ async function getImages(selectedImage, group){
         return {name: imageName, url:`data:image/png;base64,${base64}`, selected: selected}
     }))
     return images;
+    }
+    catch(err){
+        const { image } = req.body ? req.body : {image: undefined}
+        unhideError(err.toString(), res, {image})
+    }
 }
 
 async function unhide(req, res){
@@ -116,11 +159,11 @@ async function unhide(req, res){
             }
             const unhideResult = await axios.get(`${serviceBase}/api/steg/outputs/${image}`)
             const base = fs.readFileSync(resolve(templatePath, 'success', 'success.mustache'))
-            res.send(Mustache.render(base.toString('utf8'), {"msg": unhideResult.data.msg, "unhide":"/unhide"}))
+            res.send(Mustache.render(base.toString('utf8'), {"msg": unhideResult.data.msg, "unhide":"/unhide", port:`${port}`}))
         }else{
             const images = await getImages(undefined, 'outputs')
             const base = fs.readFileSync(resolve(templatePath, 'unhide', 'unhide.mustache'))
-            res.send(Mustache.render(base.toString('utf8'), {images: images}))
+            res.send(Mustache.render(base.toString('utf8'), {images: images, port:`${port}`}))
         }
     }catch(err){
         const { image } = req.body ? req.body : {image: undefined}
