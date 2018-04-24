@@ -9,7 +9,11 @@
             <div id="top-container">
             </div>
             <div id="bottom-container">
-                SUCCESS: {{msg}}
+                SUCCESS {{msg}}
+            </div>
+            <div>
+                {{#hide}}<a href={{hide}}>Perform hide again</a>{{/hide}}
+                {{#unhide}}<a href={{unhide}}>Perform unhide again</a>{{/unhide}}
             </div>
         </form>
     <div>
