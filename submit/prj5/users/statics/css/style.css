@@ -1,0 +1,36 @@
+.label {
+  font-weight: bold;
+  padding: 1ex;
+  width: 10em;
+  display: inline-block;
+  text-align: right;
+}
+
+
+.error {
+  color: red;
+}
+
+.title {
+  font-style: italic;
+  color: gray;
+}
+footer li {
+  list-style: none;
+  display: inline;
+}
+footer li + li::before {
+  content: " | ";
+}
+
+dt {
+  font-weight: bold;
+  font-color: blue;
+}
+dd {
+  margin: 0.2em 0em 1em 2em;
+}
+
+.inline {
+  display: inline;
+}
