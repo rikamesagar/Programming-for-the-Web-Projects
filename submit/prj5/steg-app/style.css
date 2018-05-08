@@ -3,3 +3,6 @@
   display: block;
 }
 
+img.selected {
+  border: solid 1px #0000FF;
+}

@@ -38,7 +38,61 @@
 
     //TODO: add wrapper methods for accessing web services.
     //Adapt from prj4-sol.
+    getImagesUrl = function(group) {
+      return `${this.apiUrl}/images`;
+    }
+    
+    list = async function(group) {
+      try {
+        const url = `${this.apiUrl}/images/${group}`;
+        const response = await axios.get(url);
+        return response.data;
+      }
+      catch (err) {
+        throw (err.response.data) ? err.response.data : err;
+      }
+    };
+    
+    hide = async function(srcGroup, srcName, outGroup, msg) {
+      try {
+        const url = `${this.apiUrl}/steg/${srcGroup}/${srcName}`;
+        const params = { outGroup: outGroup, msg: msg, };
+        const response = await axios.post(url, params);
+        const location = response.headers['location'];
+        const match = location && location.match(/[^\/]+\/[^\/]+$/);
+        if (!location || !match) {
+          const err = 'cannot get hide image location';
+          throw { response: { data: undefined},  message: err };
+        }
+        else {
+          return match[0];
+        }
+      }
+      catch (err) {
+        throw (err.response.data) ? err.response.data : err;
+      }  
+    };
 
+    getImage = async function(srcGroup, image){
+      const url = `${this.apiUrl}/images/${srcGroup}/${image}.png`;
+      const imageResult = await axios.get(url, {responseType:"arraybuffer"})
+      const base64 = btoa(
+        new Uint8Array(imageResult.data)
+          .reduce((data, byte) => data + String.fromCharCode(byte), '')
+      );
+      return {name: image, data: base64}
+    }
+    
+    unhide = async function(group, name) {
+      try {
+        const url = `${this.apiUrl}/steg/${group}/${name}`;
+        const response = await axios.get(url);
+        return response.data.msg;
+      }
+      catch (err) {
+        throw (err.response.data) ? err.response.data : err;
+      }  
+    };
 
   } //StegWs
 
@@ -51,13 +105,45 @@
     constructor(props) {
       super(props);
       //TODO other setup for Hide
+      this.state={images:[], selectedImage: undefined, msg:""}
+      props.ws.list('inputs').then((images)=>{
+        images.forEach((image, key)=>{
+          props.ws.getImage('inputs', image).then((imageResult)=>{
+            const newImages = this.state.images.map(i=>i)
+            newImages.push(imageResult)
+            this.setState({images:newImages})
+          })
+        })
+      })
     }
+    
+    
 
     //TODO other methods for Hide
 
     render() {
       //TODO rendering code
-      return "I'm Hide"
+      return(
+        <div>
+          <input type="text" onChange={(e)=> this.setState({msg:e.target.value})} value={this.state.msg} />
+          <input type="file" />
+          <ul>
+            {this.state.images && this.state.images.map((image, key)=>{
+              return (
+                <li key={key}>
+                  <HideOption selectImage={(imageName)=>{
+                    console.log("Selected Image "+imageName)
+                    this.setState({selectedImage: imageName})
+                  }} base64={image.data} selectedImage={this.state.selectedImage} imageName={image.name}/>
+                </li>
+              )
+            })}
+          </ul>
+          <button onClick={()=>{
+            this.props.ws.hide('inputs', this.state.selectedImage, 'outputs', this.state.msg)
+          }}>Hide</button>
+        </div>
+      )
     }
 
   }
@@ -69,15 +155,53 @@
     constructor(props) {
       super(props);
       //TODO other setup for Unhide
+      this.state={images:[], selectedImage: undefined, msg:""}
+      props.ws.list('outputs').then((images)=>{
+        images.forEach((image, key)=>{
+          props.ws.getImage('outputs', image).then((imageResult)=>{
+            const newImages = this.state.images.map(i=>i)
+            newImages.push(imageResult)
+            this.setState({images:newImages})
+          })
+        })
+      })
     }
 
     //TODO other methods for Unhide
 
     render() {
       //TODO rendering code
-      return "I'm Unhide"
+      return(
+        <div>
+          <input type="text" onChange={(e)=> this.setState({msg:e.target.value})} value={this.state.msg} />
+          <input type="file" />
+          <ul>
+            {this.state.images && this.state.images.map((image, key)=>{
+              return (
+                <li key={key}>
+                  <HideOption selectImage={(imageName)=>{
+                    console.log("Selected Image "+imageName)
+                    this.setState({selectedImage: imageName})
+                  }} base64={image.data} selectedImage={this.state.selectedImage} imageName={image.name}/>
+                </li>
+              )
+            })}
+          </ul>
+          <button onClick={()=>{
+            this.props.ws.unhide('outputs', this.state.selectedImage).then((msg)=>{
+              this.setState({msg:msg})
+            })
+          }}>Unhide</button>
+        </div>
+      )
     }
 
+  }
+
+  function HideOption(props){
+    return(
+        <img className={`thumbnail ${props.imageName===props.selectedImage ? "selected":""}`} onClick={()=>props.selectImage(props.imageName)} src={`data:image/png;base64,${props.base64}`}/>
+    )
   }
 
 
