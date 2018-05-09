@@ -29,6 +29,9 @@
 
   const WS_URL = getWsUrl() || DEFAULT_WS_URL;
 
+  const hideStates = []
+  const unhideStates = []
+
   class StegWs {
 
     constructor() {
@@ -58,18 +61,10 @@
         const url = `${this.apiUrl}/steg/${srcGroup}/${srcName}`;
         const params = { outGroup: outGroup, msg: msg, };
         const response = await axios.post(url, params);
-        const location = response.headers['location'];
-        const match = location && location.match(/[^\/]+\/[^\/]+$/);
-        if (!location || !match) {
-          const err = 'cannot get hide image location';
-          throw { response: { data: undefined},  message: err };
-        }
-        else {
-          return match[0];
-        }
+        return;
       }
       catch (err) {
-        throw (err.response.data) ? err.response.data : err;
+        throw (err.response && err.response.data) ? err.response.data : err;
       }  
     };
 
@@ -105,43 +100,94 @@
     constructor(props) {
       super(props);
       //TODO other setup for Hide
-      this.state={images:[], selectedImage: undefined, msg:""}
-      props.ws.list('inputs').then((images)=>{
+      this.state={images:[], selectedImage: undefined, msg:"", fileMsg:"", error:""}
+
+    }
+
+    componentDidMount(){
+      const prevState = hideStates.pop() 
+      if(prevState) 
+        this.setState({selectedImage: prevState.selectedImage, msg: prevState.msg, fileMsg: prevState.fileMsg})
+      this.props.ws.list('inputs').then((images)=>{
         images.forEach((image, key)=>{
-          props.ws.getImage('inputs', image).then((imageResult)=>{
+          this.props.ws.getImage('inputs', image).then((imageResult)=>{
             const newImages = this.state.images.map(i=>i)
             newImages.push(imageResult)
-            this.setState({images:newImages})
+            this.updateState({...this.state, images:newImages})
           })
         })
       })
     }
-    
-    
 
+    updateState(state){
+      hideStates.push(state)
+      this.setState({...state, error:""})
+    }
+
+    componentDidCatch(error, info) {
+      this.updateState({...this.state, error})
+    }
+    
     //TODO other methods for Hide
+    validate(){
+      return (this.state.msg.length>0 || this.state.fileMsg.length>0) && this.state.selectedImage && !(this.state.msg.length>0 && this.state.fileMsg.length>0)
+    }
+
+    getError(){
+      let error = ""
+      if(this.state.msg.length==0 && this.state.fileMsg.length==0){
+       error+="Please enter a message. "
+      }
+      if(this.state.msg.length>0 && this.state.fileMsg.length>0){
+        error+="Please either enter a message in textbox or choose a file with text, not both. "
+      }
+      if(this.state.selectedImage===undefined){
+       error+="Please select an image"
+      }
+      this.setState({error: error})
+    }
 
     render() {
       //TODO rendering code
       return(
         <div>
-          <input type="text" onChange={(e)=> this.setState({msg:e.target.value})} value={this.state.msg} />
-          <input type="file" />
+          <input type="text" onChange={(e)=> this.updateState({...this.state, msg:e.target.value})} value={this.state.msg} />
+          <span id="or">OR</span>
+          <input type="file" multiple="false" onChange={(e)=>{
+            console.log("On change fired ")
+            readFile(e.target.files[0]).then((msg)=>{
+              this.updateState({...this.state, fileMsg:msg})
+            })
+          }} onClick={(e)=>e.target.value=null}/>
           <ul>
             {this.state.images && this.state.images.map((image, key)=>{
               return (
                 <li key={key}>
                   <HideOption selectImage={(imageName)=>{
                     console.log("Selected Image "+imageName)
-                    this.setState({selectedImage: imageName})
+                    this.updateState({...this.state, selectedImage: imageName})
                   }} base64={image.data} selectedImage={this.state.selectedImage} imageName={image.name}/>
                 </li>
               )
             })}
           </ul>
           <button onClick={()=>{
-            this.props.ws.hide('inputs', this.state.selectedImage, 'outputs', this.state.msg)
+            const msg = this.state.msg || this.state.fileMsg;
+            const app = this.props.app
+            if(this.validate()){
+              this.props.ws.hide('inputs', this.state.selectedImage, 'outputs', msg).then(()=>{
+                app.select("unhide")
+              }).catch((e)=>this.updateState({...this.state, error: e}))
+            }else{
+              this.getError()
+            }
           }}>Hide</button>
+          <button onClick={()=>{
+            this.updateState({selectedImage:undefined, msg:"", fileMsg:""})
+          }}>Clear</button>
+          <div className="error">
+            {this.state.error.length > 0 && this.state.error}
+          </div>
         </div>
       )
     }
@@ -155,43 +201,85 @@
     constructor(props) {
       super(props);
       //TODO other setup for Unhide
-      this.state={images:[], selectedImage: undefined, msg:""}
-      props.ws.list('outputs').then((images)=>{
+      this.state={images:[], selectedImage: undefined, msg:"", error:""}
+    }
+
+    updateState(state){
+      unhideStates.push(state)
+      this.setState({...state, error:""})
+    }
+
+    componentDidMount(){
+      console.log("componentDidMount Unhide")
+      const prevState = unhideStates.pop()
+      if(prevState) {
+        this.setState({selectedImage: prevState.selectedImage, msg: prevState.msg})
+      }
+      this.props.ws.list('outputs').then((images)=>{
+        if(prevState && (images.length > prevState.images.length)) prevState.selectedImage=undefined;
         images.forEach((image, key)=>{
-          props.ws.getImage('outputs', image).then((imageResult)=>{
+          this.props.ws.getImage('outputs', image).then((imageResult)=>{
+            let selectedImage=undefined;
             const newImages = this.state.images.map(i=>i)
             newImages.push(imageResult)
-            this.setState({images:newImages})
+            let prevImages = prevState ? prevState.images : [];
+            prevImages = prevImages.filter(i=>i.name===image)
+            if(prevState && prevImages.length===0) selectedImage=image
+            if(prevState && prevState.selectedImage) selectedImage = prevState.selectedImage
+            this.updateState({...this.state, images:newImages, selectedImage})
           })
         })
       })
     }
+    componentDidCatch(error, info) {
+      this.updateState({...this.state, error})
+    }
 
+    validate(){
+      return this.state.selectedImage != undefined
+    }
+
+    getError(){
+      let error = ""
+      if(this.state.selectedImage===undefined){
+       error+="Please select an image"
+      }
+      this.setState({error: error})
+    }
     //TODO other methods for Unhide
 
     render() {
       //TODO rendering code
       return(
         <div>
-          <input type="text" onChange={(e)=> this.setState({msg:e.target.value})} value={this.state.msg} />
-          <input type="file" />
+          <input type="text" onChange={(e)=> this.updateState({...this.state, msg:e.target.value})} value={this.state.msg} />
           <ul>
             {this.state.images && this.state.images.map((image, key)=>{
               return (
                 <li key={key}>
                   <HideOption selectImage={(imageName)=>{
                     console.log("Selected Image "+imageName)
-                    this.setState({selectedImage: imageName})
+                    this.updateState({...this.state, selectedImage: imageName})
                   }} base64={image.data} selectedImage={this.state.selectedImage} imageName={image.name}/>
                 </li>
               )
             })}
           </ul>
           <button onClick={()=>{
-            this.props.ws.unhide('outputs', this.state.selectedImage).then((msg)=>{
-              this.setState({msg:msg})
-            })
+            if(this.validate()){
+              this.props.ws.unhide('outputs', this.state.selectedImage).then((msg)=>{
+                this.setState({msg:msg})
+              }).catch((e)=>this.updateState({...this.state, error: e}))
+            }else{
+              this.getError()
+            }
           }}>Unhide</button>
+          <button onClick={()=>{
+            this.updateState({selectedImage:undefined})
+          }}>Clear</button>
+          <div className="error">
+            {this.state.error.length > 0 && this.state.error}
+          </div>
         </div>
       )
     }
