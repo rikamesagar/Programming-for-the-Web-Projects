@@ -162,12 +162,10 @@
           <ul>
             {this.state.images && this.state.images.map((image, key)=>{
               return (
-                <li key={key}>
-                  <HideOption selectImage={(imageName)=>{
+                  <HideOption key={key} selectImage={(imageName)=>{
                     console.log("Selected Image "+imageName)
                     this.updateState({...this.state, selectedImage: imageName})
                   }} base64={image.data} selectedImage={this.state.selectedImage} imageName={image.name}/>
-                </li>
               )
             })}
           </ul>
@@ -212,20 +210,22 @@
     componentDidMount(){
       console.log("componentDidMount Unhide")
       const prevState = unhideStates.pop()
+      let recentlyHiddenImage = null
+      const previouslySelectedImage = prevState ? prevState.selectedImage : undefined
       if(prevState) {
         this.setState({selectedImage: prevState.selectedImage, msg: prevState.msg})
       }
       this.props.ws.list('outputs').then((images)=>{
         if(prevState && (images.length > prevState.images.length)) prevState.selectedImage=undefined;
         images.forEach((image, key)=>{
+          
           this.props.ws.getImage('outputs', image).then((imageResult)=>{
-            let selectedImage=undefined;
             const newImages = this.state.images.map(i=>i)
             newImages.push(imageResult)
             let prevImages = prevState ? prevState.images : [];
             prevImages = prevImages.filter(i=>i.name===image)
-            if(prevState && prevImages.length===0) selectedImage=image
-            if(prevState && prevState.selectedImage) selectedImage = prevState.selectedImage
+            if(prevState && prevImages.length===0) recentlyHiddenImage=image
+            const selectedImage = recentlyHiddenImage || previouslySelectedImage
             this.updateState({...this.state, images:newImages, selectedImage})
           })
         })
@@ -252,16 +252,14 @@
       //TODO rendering code
       return(
         <div>
-          <input type="text" onChange={(e)=> this.updateState({...this.state, msg:e.target.value})} value={this.state.msg} />
+          <input type="text" readonly="true" onChange={(e)=> this.updateState({...this.state, msg:e.target.value})} value={this.state.msg} />
           <ul>
             {this.state.images && this.state.images.map((image, key)=>{
               return (
-                <li key={key}>
-                  <HideOption selectImage={(imageName)=>{
+                  <HideOption key={key} selectImage={(imageName)=>{
                     console.log("Selected Image "+imageName)
                     this.updateState({...this.state, selectedImage: imageName})
                   }} base64={image.data} selectedImage={this.state.selectedImage} imageName={image.name}/>
-                </li>
               )
             })}
           </ul>
@@ -288,8 +286,11 @@
 
   function HideOption(props){
     return(
-        <img className={`thumbnail ${props.imageName===props.selectedImage ? "selected":""}`} onClick={()=>props.selectImage(props.imageName)} src={`data:image/png;base64,${props.base64}`}/>
-    )
+        <li>
+          <img className={`thumbnail ${props.imageName===props.selectedImage ? "selected":""}`} onClick={()=>props.selectImage(props.imageName)} src={`data:image/png;base64,${props.base64}`}/>
+          <span>{props.imageName}</span>
+        </li>
+      )
   }
 
 
